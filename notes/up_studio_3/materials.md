@@ -65,3 +65,9 @@ You can either use the buttons at the top of the screen...
 ... or the extruder tab in the configuration.
 
 ![image](https://user-images.githubusercontent.com/1441553/215382265-86606ef9-cfc2-4701-aefe-a17d0031b140.png)
+
+## No matching parameters
+
+![image](https://user-images.githubusercontent.com/1441553/215382709-3ddd3a9e-2719-493d-9f7f-3def0759a903.png)
+
+When you create a custom material and assign it to an extruder you'll get a warning about 'no matching material'. UP Studio3 appears to have hardcoded support for the default materials. This warning seems to be more like "Using a non-default material, hope you know what you're doing!"
