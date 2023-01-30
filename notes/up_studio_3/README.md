@@ -6,6 +6,6 @@ My exploration of this software has been involved enough that I feel the need to
 
 I hope you find them useful.
 
-* [Configuration management](/3d-printing/notes/up_studio_3/configuration.md)
-* [Custom materials](/3d-printing/notes/up_studio_3/materials.md)
-* [Sending prints to a printer](/3d-printing/notes/up_studio_3/send_to_printer.md)
+* [Configuration management](configuration.md)
+* [Custom materials](materials.md)
+* [Sending prints to a printer](send_to_printer.md)
