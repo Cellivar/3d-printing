@@ -92,3 +92,22 @@ At this point your new material should show up in the list of 'Available Materia
 Click Ok to close the material management window. You can now select the material type either in Wand or on the machine itself in the 'Materials' menu.
 
 Note that when changing the material in Wand it can take a VERY long time to take effect. Wand will appear to hang. Just give it a minute.
+
+You cannot remove a material currently in use. Select a different material first, then you can remove it.
+
+## Updating an existing material
+
+I'm honestly not sure what actually worked here. I generally tried:
+
+1. Remove the material from the 'Material In Use' list.
+2. Restart UP Studio3 / Wand
+3. Restart it again because it crashed
+4. Still see the old material in the list, try to import the material again
+5. Crash, restart
+6. Old material is gone, import material from task.
+7. Wand lost connection
+8. Try to use the new material in UP Studio, get an error, wand lost connection
+9. Repeat like 4 times
+10. Suddenly everything is working
+
+If I figure out how to do this reliably I'll update this.
