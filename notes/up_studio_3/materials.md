@@ -111,3 +111,14 @@ I'm honestly not sure what actually worked here. I generally tried:
 10. Suddenly everything is working
 
 If I figure out how to do this reliably I'll update this.
+
+### Possible intended workflow (that I got working once so far)
+
+1. Set the materials in Wand to something else.
+2. Remove the material from the 'Materials in Use' list so that it only shows in the 'Available Materials' list.
+3. Re-import the material from task.
+4. Add the material to the 'Materials in Use' list.
+5. Set the materials in Wand to the updated material.
+
+There is no visible indication that your material is updated, so it's hard to tell if this is working reliably or not.
+
