@@ -66,8 +66,29 @@ You can either use the buttons at the top of the screen...
 
 ![image](https://user-images.githubusercontent.com/1441553/215382265-86606ef9-cfc2-4701-aefe-a17d0031b140.png)
 
-## No matching parameters
+### No matching parameters
 
 ![image](https://user-images.githubusercontent.com/1441553/215382709-3ddd3a9e-2719-493d-9f7f-3def0759a903.png)
 
 When you create a custom material and assign it to an extruder you'll get a warning about 'no matching material'. UP Studio3 appears to have hardcoded support for the default materials. This warning seems to be more like "Using a non-default material, hope you know what you're doing!"
+
+## Load to Printer
+
+Finally you need to load the new material profile into the printer itself. For this you need to be connected to the printer from the Wand software. Do that if you have not done so already.
+
+1. Slice your model you wish to print.
+2. Save the sliced model somewhere, you'll need both the TSG and TSK files that it saves together.
+3. Select the (possibly blank) material dropdown and click 'edit'.
+
+![image](https://user-images.githubusercontent.com/1441553/215383923-f2f7ccce-f552-4c35-ae5e-842c03f4b36c.png)
+
+4. Click 'Import from task' at the bottom.
+5. Select the task file you just saved that includes your new profile to import it.
+
+At this point your new material should show up in the list of 'Available Materials'. Clicking the 'x' next to a material in use will remove it from the printer and move it into the 'Available Materials' list. Once you do this once an arrow will show up that you can click to move materials to the 'Materials in Use' on the printer. I had to move ABS off of the 'In Use' list to get the arrows to show up.
+
+![image](https://user-images.githubusercontent.com/1441553/215390920-f6258a65-e701-47e8-ac2b-c4414d75654e.png)
+
+Click Ok to close the material management window. You can now select the material type either in Wand or on the machine itself in the 'Materials' menu.
+
+Note that when changing the material in Wand it can take a VERY long time to take effect. Wand will appear to hang. Just give it a minute.
