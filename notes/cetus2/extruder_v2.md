@@ -97,6 +97,8 @@ This is the full route of the filament thorugh the extruder module.
 * Small air gap
 * Delrin? Tiertime custom extruder gear mechanism
     * Mounted to bracket with two M2.5-0.4x10 hex-head (2mm hex)
+    * Once screws are removed the delrin take significant force to slide off of the mount. You DO NOT need to remove the e-clip on the shaft to get the delrin off.
+    * Gear is press-fit onto the shaft and is 9mm diameter
 * FY-Motor 25BYHJ49-24B
     * No [exact match on their website](http://en.fy-motor.com/product/148.html) but similar models indicate:
     * Step angle: 7.5 degrees
@@ -104,14 +106,34 @@ This is the full route of the filament thorugh the extruder module.
     * 12V 0.3A (constant current?) 20Ω 9.8mH
     * "Step avail": 1/47.32mm ?
     * Push torque: 900N
-    * Shaft: ?mm x ??mm
-    * Mounted to bracket with two M3-0.4x6 hex-head (2.5mm hex key)
+    * Shaft: 5mm x ??mm
+    * Mounted to bracket with two M3-0.4x6 hex-head screws (2.5mm hex key)
 * Small air gap
 * PEEK-material tube holder mount
 * PTFE tube into hotend
 * Hotend tube with heatsink shroud, down to nozzle chamber
 * Copper nozzle gasket
 * Nozzle
+    * 12mm retaining nut with 2.5?mm hole in center
+    * Maaayyyybe enough room at the top of the threads for a temp sensor closer to the nozzle tip?
+
+#### Bracket pieces
+
+Instead of left/right I identify the parts by the filament number they're attached to. The parts have mirror symmetry, not rotational, so keep them straight. I marked them with a marker.
+
+* Extruder motor bracket (2x)
+    * Each bracket mounted to the heatsink block below it with two M3-0.4?x8 hex-head screws (2.5mm hex key)
+* Heatsink block (2x)
+    * Same threaded holes on both parts for part cooling fan, only used by one fan.
+* PEEK PTFE tube holder (2x)
+    * Mounted to heatsink with two MX-0.4-XX hex-head screws (2mm hex)
+* Hotend fan deflector (1x)
+    * Structural, holds the heatsinks in alignment.
+    * Mounted to each heat sink with two M3-0.4x6 hex-head screws (2.5mm hex key)
+* Extruder head printer mount (1x)
+    * Structural, holds the heatsinks in alignment.
+    * Mounted to each heat sink with two M3-0.3?x8 hex-had screw (2.5mm hex key)
+    * Mounted to the gantry platform with one (!) M4-0.8x10 hex-head screw (3mm hex) with a lock washer and a washer.
 
 #### Fans
 
