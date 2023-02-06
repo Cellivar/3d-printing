@@ -98,10 +98,11 @@ This is the full route of the filament thorugh the extruder module.
 * Stepper motor
     * Mounted to bracket with two M3-0.4x6 hex-head screws (2.5mm hex key)
 * Delrin? Tiertime custom extruder gear mechanism
-    * Mounted to bracket with two M2.5-0.4x10 hex-head (2mm hex)
+    * Mounted to bracket with two M2.5-0.4x10 hex-head screws (2mm hex)
     * Once screws are removed the delrin take significant force to slide off of the mount. You DO NOT need to remove the e-clip on the shaft to get the delrin off.
 * Small air gap
 * PEEK-material tube holder mount
+    * Mounted to heatsink with two M2.5-0.4x10 hex-head screws (2mm hex)
 * PTFE tube into hotend
 * Hotend tube with heatsink shroud, down to nozzle chamber
 * Copper nozzle gasket
@@ -140,6 +141,7 @@ Instead of left/right I identify the parts by the filament number they're attach
     * Each bracket mounted to the heatsink block below it with two M3-0.4?x8 hex-head screws (2.5mm hex key)
 * Heatsink block (2x)
     * Same threaded holes on both parts for part cooling fan, only used by one fan.
+    * Heatsink clamps to the hotend element with a clamp screw behind the mount, looks to be an M3 screw?
 * PEEK PTFE tube holder (2x)
     * Mounted to heatsink with two MX-0.4-XX hex-head screws (2mm hex)
 * Hotend fan deflector (1x)
