@@ -66,11 +66,15 @@ stateDiagram-v2
 
 ### Power Supply
 
-PSU: 350w 24v (14A) PSU.
+The claim: 350w 24v (14A) PSU.
 
-The PSU is wired directly to the terminal screws on the mainboard. 
+The actual PSU is a [Delta Electronics PMT-24V100W2BA](https://www.deltapsu.com/en/products/panel-mount-power-supply/PMT-24V100W2BA) that has a max output of 108W. The other 250W is likely the direct AC connection to the heated bed.
 
-The Mainboard contains two switch-mode power supplies to drop the 24v to 5v and 12v, powering other devices. Both of these boards are submodule daughtboards on risers above the mainboard.
+The 24V PSU is wired directly to the terminal screws on the mainboard. 
+
+The mainboard contains two switch-mode power supplies to drop the 24v to 5v and 12v, powering other devices. Both of these boards are submodule daughtboards on risers above the mainboard. These are hot-glued onto the board and fairly obviously not user-replacable.
+
+The X, Y, and Z stepper motor drivers are soldered directly to the board, using [TMC2225-SA](https://www.trinamic.com/products/integrated-circuits/details/tmc2225-sa/) for the driver circuit.
 
 ### Heated Bed supply
 
@@ -116,37 +120,43 @@ The connectors have silkscreen labels that are hard to read.
     * Pin 3: Not connected?
 * Z-Axis Motor Port `MZ`
     * 4 pin yellow connector
-* Heated bed control `GM`?
+* Heated bed control `Gt1`
     * 2 pin JST connector, next to 12v module, towards the screw terminals
-* Heated bed temp sensor
-    * 2 pin JST connector, next to the filament sensor connector, labelled `TB`?
+* Heated bed temp sensor `TB`
+    * 2 pin JST connector, next to the filament sensor connector
 * Touchscreen FFC cable `Ju2`
     * 10 pins, middle of board
 * Filament sensor `Ps`
     * 4 pin connector, middle of board
 * Rainbow IDC connector `Pa3`
     * 34 pin connector
-* Mystery connector `TH2`?
+* Mystery connector `TH2`
     * 3 pin next to Tiertime logo and screw
     * No documentation, unused?
 * Mystery connector `24V`
     * 2 pin next to 12v module and heated bed control.
     * No documentation, unused?
-    * Maybe just 24v for the eventual automated build plate?
+    * 24V on printer boot without initialization. Unclear if it can be controlled.
+    * Pin towards the edge is ground, pin towards the center of the board is +24v.
+    * Maybe just 24v for the automated build plate?
 * Mystery connector `PB5`
     * 3 pin next to rainbow connector
     * No documentation, unused?
-    * Maybe "Print Bed" for the eventual automated build plate?
+    * Maybe "Print Bed" for the automated build plate?
 * Mystery connector `5V`
     * 2 pin next to touchscreen FFC connector
     * No documentation, unused?
-    * Maybe just 5v for the eventual automated build plate?
+    * 5V present at boot without initialization. Unclear if it can be controlled.
+    * Pin towards the SD card slot is ground, pin towards the FFC touchscreen connector is +5V.
+    * Maybe just 5v for the automated build plate?
 
 ![image](https://user-images.githubusercontent.com/1441553/216761743-5f0dff55-8961-4192-a4d1-8ac51d5a1a38.png)
 
 #### Mainboard PSU submodules
 
 Note that these modules aren't keyed, there is a little silkscreen indicator on the board for which one goes in which spot.
+
+Both are glued down on my board, I can't easily remove them to determine their capabilities.
 
 * 24V -> 12V
 * Unknown safe amps
