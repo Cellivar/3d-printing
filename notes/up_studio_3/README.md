@@ -24,4 +24,4 @@ Buried on their website are some nice walkthroughs of some of the concepts in UP
 
 * [Ultrafast and economical stringing test](https://www.thingiverse.com/thing:2219103) - Ask me how many of these are sitting in my scrap bin
 * [Print quality troubleshooting guide with pictures!](https://www.simplify3d.com/resources/print-quality-troubleshooting/)
-* 
+* [Getting Started guide by Hindra](https://forum.tiertime.com/t/getting-started-in-up-studio-3/3628/3)
