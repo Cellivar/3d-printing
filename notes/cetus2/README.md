@@ -10,8 +10,9 @@ As a software engineer, DevOps automation engineer, and dabbler of electronics I
 
 ## Notes
 
-* Electrical systems, including pinouts. 
-* Extruder, a fairly self-contained module that wouldn't be too hard to swap out. 
+* [Electrical systems](electrical.md), including pinouts. 
+* [Extruder head](extruder_v2.md), a fairly self-contained module that wouldn't be too hard to swap out. 
+* [Filament sensor](filament_sensor.md), the official add-on.
 
 ## Official Features (And notes about them)
 
@@ -31,13 +32,15 @@ As a software engineer, DevOps automation engineer, and dabbler of electronics I
     * Octoprint support was also promised and isn't available yet. [A tweet mentions support in 2021](https://twitter.com/TiertimeCorp/status/1435913995987292168) and there has been no follow-up.
     * Third party gcode support is mentioned and hasn't really shipped. [What is documented is pretty old](https://support.tiertime.com/hc/en-us/articles/360001465934-Printing-with-Gcodes) and missing some useful commands. 
 
-## The low-spec version
+### The low-spec version
 
-Originally the Kickstarter had an option for a basic low spec 
+Originally the Kickstarter had an option for a basic low spec version, which was removed to avoid the complexity of having lower quality components in stock to build them.
 
 ## Official add-ons
 
 ### Filament Monitoring
+
+See the [separate notes page](filament_sensor.md) on the filament monitor.
 
 This came with the deluxe package (which I got) and is a small metal box that fits on the back of the Z axis metal frame. It includes both microswitches and hall-effect filament motion sensors. 
 
