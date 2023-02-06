@@ -95,19 +95,11 @@ This is the full route of the filament thorugh the extruder module.
     * Mounted to bracket with four M2.5-0.4x7.5 hex-head (2mm hex)
     * Don't over-tighten, threads are directly into 3D printed top bracket
 * Small air gap
+* Stepper motor
+    * Mounted to bracket with two M3-0.4x6 hex-head screws (2.5mm hex key)
 * Delrin? Tiertime custom extruder gear mechanism
     * Mounted to bracket with two M2.5-0.4x10 hex-head (2mm hex)
     * Once screws are removed the delrin take significant force to slide off of the mount. You DO NOT need to remove the e-clip on the shaft to get the delrin off.
-    * Gear is press-fit onto the shaft and is 9mm diameter
-* FY-Motor 25BYHJ49-24B
-    * No [exact match on their website](http://en.fy-motor.com/product/148.html) but similar models indicate:
-    * Step angle: 7.5 degrees
-    * 2 phases, 2 wires for each phase.
-    * 12V 0.3A (constant current?) 20Ω 9.8mH
-    * "Step avail": 1/47.32mm ?
-    * Push torque: 900N
-    * Shaft: 5mm x ??mm
-    * Mounted to bracket with two M3-0.4x6 hex-head screws (2.5mm hex key)
 * Small air gap
 * PEEK-material tube holder mount
 * PTFE tube into hotend
@@ -116,6 +108,29 @@ This is the full route of the filament thorugh the extruder module.
 * Nozzle
     * 12mm retaining nut with 2.5?mm hole in center
     * Maaayyyybe enough room at the top of the threads for a temp sensor closer to the nozzle tip?
+
+#### Motor and gear
+
+The Cetus2 V2 extruder is a direct drive extruder with the filament gripping gear located just above the hotend PTFE tubing. 
+
+* FY-Motor 25BYHJ49-24B
+    * No [exact match on their website](http://en.fy-motor.com/product/148.html) but similar models indicate:
+    * Step angle: 7.5 degrees
+    * 2 phases, 2 wires for each phase.
+    * 12V 0.3A (constant current?) 20Ω 9.8mH
+    * "Step avail": 1/47.32mm ?
+    * Push torque: 900N
+    * Shaft: 5mm x 13mm-ish
+
+The geared stepper motor is sandwitched against the black metal frame, then a white delrin? injection moulded part acts as the guideway for the filament. The bearing and e clip does not need to be removed to take off the delrin, it's just the two bolts holding it in.
+
+The stock gear appears to be fairly rough machined steel of some sort, it's uncomfortably rough against my fingers and doesn't feature a tooth profile you'd expect for an actual gear. This implies it's custom stock for this purpose.
+
+The stock gear is press-fit onto the motor shaft, including a flat spot on the shaft and a D-shaped inner diameter on the gear. The gear is a nonstandard 9mm-ish sandwiched between two 10mm bearings, appear to be C5-10ZZ (5mm ID, 10mm OD, 4mm thick, double shielded).
+
+A second smaller bearing is used to direct the filament against the gear. It's press-fit into the white delrin guide, appears to be a 683ZZ (3mm ID, 7mm OD, 3mm thick, probably double shielded). There is no spring for additional clamping load.
+
+This gear in the past has been [identified as having quality control issues](https://www.cnckitchen.com/blog/fixing-inconsistent-extrusions-systematically) and an off-center bore. This can lead to patterns and inconsistencies in extruder flow, especially on larger complex parts. If you've excluded other common troubleshooting steps this may be something else to check. I haven't dialed in the rest of my machine well enough to identify this issue yet.
 
 #### Bracket pieces
 
