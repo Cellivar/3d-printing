@@ -14,6 +14,10 @@ As a software engineer, DevOps automation engineer, and dabbler of electronics I
 * [Extruder head](extruder_v2.md), a fairly self-contained module that wouldn't be too hard to swap out. 
 * [Filament sensor](filament_sensor.md), the official add-on.
 
+### General behavioral notes
+
+The firmware as of 2023-02-05 will initialize _without the extruder attached at all_. This is very promising for using the printer for other purposes, such as a laser cutter head.
+
 ## Official Features (And notes about them)
 
 [![Kickstarter early promises](https://ksr-ugc.imgix.net/assets/035/910/268/c8e781036ce6dd80b34adf8b49d6e5ee_original.jpg?ixlib=rb-4.0.2&w=680&fit=max&v=1640232035&gif-q=50&q=92&s=caa7e1f60c07ba8bdf477837b43ad1a9)](https://www.kickstarter.com/projects/cetus/cetus2-3d-printing-with-material-and-color-mixing-innovation)
