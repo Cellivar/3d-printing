@@ -14,6 +14,7 @@ BE CAREFUL with the wifi antenna, which normally is glued to a plastic insert in
 ### General observations
 
 * The main structure of the printer is extruded aluminum, leading ot a relatively low noise and strong structure to prevent vibration. This makes me more confident this printer has a lot of 'dial in' range for getting high quality prints.
+* Most screws on my machine needed a little tightening down. I'm tempted to loctite some of the frame screws that shouldn't move very often.
 * There is ample room towards the front of the unit for additional connectors on the side. It shouln't be particularly difficult to add nice-looking custom ports near thee exposed SD card and USB-C port, or on the opposite side.
 * The wifi connection is a standard U.FL connector. If you're having significant problems with wifi on this printer it should be possible to modify it with a custom antenna routed along the same path as the filament sensor and mount it towards the top of the Z-axis plate. This should improve reception, especially in a basement or far-off garage.
 
