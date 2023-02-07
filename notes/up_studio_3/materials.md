@@ -74,51 +74,25 @@ When you create a custom material and assign it to an extruder you'll get a warn
 
 ## Load to Printer
 
-Finally you need to load the new material profile into the printer itself. For this you need to be connected to the printer from the Wand software. Do that if you have not done so already.
+Once you have your new material configured you need to send it to the printer.
 
-1. Slice your model you wish to print.
-2. Save the sliced model somewhere, you'll need both the TSG and TSK files that it saves together.
-3. Select the (possibly blank) material dropdown and click 'edit'.
+1. Make sure your printer is conneced in Wand.
+2. Back in Up Studio3 Click the printer selection dropdown and wait 5 seconds for your printer to show up.
+3. Select your printer, this will set it as the active printer.
 
-![image](https://user-images.githubusercontent.com/1441553/215383923-f2f7ccce-f552-4c35-ae5e-842c03f4b36c.png)
+While a real printer is connected as the active printer you can now select your new material in the material drop-down at the top of the screen. EVERY TIME YOU DO THIS THE WAND APPLIATION WILL LOCK UP FOR UP TO 10 SECONDS. If you try to do anything else while it's locked up it will crash and you'll have to start over.
 
-4. Click 'Import from task' at the bottom.
-5. Select the task file you just saved that includes your new profile to import it.
+When you select your new material for extruder 1 in Up Studio3 switch back to the Wand application and watch it disconnect and then reconnect. When it reconnects (either automatically or manually) it should show your material in the extruder 1 slot. Repeat the process for extruder 2.
 
-At this point your new material should show up in the list of 'Available Materials'. Clicking the 'x' next to a material in use will remove it from the printer and move it into the 'Available Materials' list. Once you do this once an arrow will show up that you can click to move materials to the 'Materials in Use' on the printer. I had to move ABS off of the 'In Use' list to get the arrows to show up.
+### Updating an existing material
 
-![image](https://user-images.githubusercontent.com/1441553/215390920-f6258a65-e701-47e8-ac2b-c4414d75654e.png)
+When you change an existing material you need to force Up Studio3 to update the material on the printer.
 
-Click Ok to close the material management window. You can now select the material type either in Wand or on the machine itself in the 'Materials' menu.
-
-Note that when changing the material in Wand it can take a VERY long time to take effect. Wand will appear to hang. Just give it a minute.
-
-You cannot remove a material currently in use. Select a different material first, then you can remove it.
-
-## Updating an existing material
-
-I'm honestly not sure what actually worked here. I generally tried:
-
-1. Remove the material from the 'Material In Use' list.
-2. Restart UP Studio3 / Wand
-3. Restart it again because it crashed
-4. Still see the old material in the list, try to import the material again
-5. Crash, restart
-6. Old material is gone, import material from task.
-7. Wand lost connection
-8. Try to use the new material in UP Studio, get an error, wand lost connection
-9. Repeat like 4 times
-10. Suddenly everything is working
-
-If I figure out how to do this reliably I'll update this.
-
-### Possible intended workflow (that I got working once so far)
-
-1. Set the materials in Wand to something else.
-2. Remove the material from the 'Materials in Use' list so that it only shows in the 'Available Materials' list.
-3. Re-import the material from task.
-4. Add the material to the 'Materials in Use' list.
-5. Set the materials in Wand to the updated material.
-
-There is no visible indication that your material is updated, so it's hard to tell if this is working reliably or not.
-
+1. Ensure your printer is connected in Up Studio3
+2. Select a different material for extruder 1 than your modified material. 
+3. Wait for the Wand appliation to reconnect. Do not do anything else until it's reconnected.
+4. Once reconnected selec a different material for extruder 2. Wait for Wand to disconnect and reconnect. (Yes really.)
+5. Now that the printer has a different material selected for both extruders you can push your updated material to the printer.
+6. Select your updated material for extruder 1. Wait for Wand to reconnect.
+7. Select your updated material for extruder 2. Wait for Wand to reconnect.
+8. Slice and print your model.
