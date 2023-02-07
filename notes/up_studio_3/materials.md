@@ -80,9 +80,11 @@ Once you have your new material configured you need to send it to the printer.
 2. Back in Up Studio3 Click the printer selection dropdown and wait 5 seconds for your printer to show up.
 3. Select your printer, this will set it as the active printer.
 
-While a real printer is connected as the active printer you can now select your new material in the material drop-down at the top of the screen. EVERY TIME YOU DO THIS THE WAND APPLIATION WILL LOCK UP FOR UP TO 10 SECONDS. If you try to do anything else while it's locked up it will crash and you'll have to start over.
+While a real printer is connected as the active printer you can now select your new material in the material drop-down at the top of the screen. EVERY TIME YOU DO THIS THE WAND APPLICATION WILL LOCK UP FOR UP TO 10 SECONDS. If you try to do anything else while it's locked up it will crash and you'll have to start over.
 
 When you select your new material for extruder 1 in Up Studio3 switch back to the Wand application and watch it disconnect and then reconnect. When it reconnects (either automatically or manually) it should show your material in the extruder 1 slot. Repeat the process for extruder 2.
+
+This is the fastest and most reliable way I've found to modify my material profiles.
 
 ### Updating an existing material
 
