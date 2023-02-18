@@ -104,6 +104,7 @@ This is the full route of the filament thorugh the extruder module.
 * PEEK-material tube holder mount
     * Mounted to heatsink with two M2.5-0.4x10 hex-head screws (2mm hex)
 * PTFE tube into hotend
+    * Supposedly 32mm long when new. PTFE tubes are known to shrink with high print temperatures
 * Hotend tube with heatsink shroud, down to nozzle chamber
 * Copper nozzle gasket
 * Nozzle
