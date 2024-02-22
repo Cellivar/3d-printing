@@ -96,3 +96,39 @@ T0
 PROM 5
 M2
 ```
+
+## My Profile 2023-05-29
+
+Unsatisfied with the print quality, I started messing with settings trying to understand what choices the Tiertime crew made when designing their profile.
+
+### Printer Start G-Code
+
+The Tiertime provided start G-code sets several static values instead of using variables. I experimented with switching these values to variables provided elsewhere by the configuration, so I could use the same start G-Code with other profiles.
+
+These variable names come from [the `fdmprinter.def.json`](https://github.com/Ultimaker/Cura/blob/main/resources/definitions/fdmprinter.def.json), from which other printer definitions are derived.
+
+```text
+;{"ver":"100","model":"{jobname}","printer":"Cetus2","mat":"PLA","thick":"20","fill":"0","time":"18","weight":"{filament_weight}"}
+;Job Name: {jobname}
+;User Name: Cura
+M83; A axix relative
+DEF G10 G0 A-{retraction_amount} B-{retraction_amount}
+DEF G11 G0 A{retraction_amount} B{retraction_amount}
+M104 T0 S{material_print_temperature_layer_0}
+M104 T1 S{material_print_temperature_layer_0}
+PROM 2
+M42 P14 S511; open cooling fan
+```
+
+```text
+;{print_time}
+;{filament_amount}
+;{filament_weight}
+;{filament_cost}
+;{jobname}
+;{material_bed_temperature_layer_0}
+;{material_print_temperature_layer_0}
+;{speed_print}
+```
+
+This didn't work, I'm not sure why, and I kind of gave up on it.
