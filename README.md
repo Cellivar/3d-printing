@@ -21,3 +21,7 @@ My second printer is a custom Voron v0 build modded with the TriZero Plus50, Box
 
 * [Notes on the UP Studio3 software from Tiertime/Cetus3D](/notes/up_studio_3/README.md)
   * [Configurations that I got working well for UP Studio3 and my Cetus2](/configs/printers/cetus2/README.md)
+
+## Configs
+
+My home network runs on a Nomad cluster, and my printers are part of that cluster. I use the configs in the [terraform directory](./terraform/README.md) to deploy the printer jobs to the cluster and manage publishing the config files to Consul. This makes working on configs via Git and Visual Studio very easy for me.
