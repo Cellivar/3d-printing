@@ -1,0 +1,8 @@
+
+[*.cfg]
+indent_style = space
+indent_size = 2
+
+[*.hcl]
+indent_style = space
+indent_size = 2
