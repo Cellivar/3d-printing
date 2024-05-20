@@ -4,7 +4,7 @@ locals {
   klipper_img_version   = "v0.12.0-125-gbfb71bc2"
   moonraker_img_version = "v0.8.0-324-ga3e4dac"
   fluidd_img_version    = "v1.28.1"
-  spoolman_img_version  = "v0.17"
+  spoolman_img_version  = "0.18"
 
   # Config files expected to be on every printer.
   common_configs = {
@@ -18,7 +18,10 @@ locals {
 resource "nomad_job" "printer-services" {
   jobspec = templatefile(
     "${local.tmpldir}/printer_services.nomad.hcl",
-    {}
+    {
+      fluidd_img_version   = local.fluidd_img_version
+      spoolman_img_version = local.spoolman_img_version
+    }
   )
 }
 

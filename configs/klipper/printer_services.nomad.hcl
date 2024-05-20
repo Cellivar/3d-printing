@@ -73,7 +73,7 @@ job "3DPrinter-Services" {
 
       resources {
         cpu    = 500
-        memory = 50
+        memory = 500
       }
 
       service {
@@ -96,7 +96,6 @@ job "3DPrinter-Services" {
           timeout  = "5s"
         }
       }
-    }
 
       vault {
         policies    = ["ecowitt-policy"]
@@ -116,14 +115,13 @@ SPOOLMAN_PORT=7912
 
 # DB Type: sqlite, mysql, postgresql, cockroachdb
 # Default if not set: sqlite
-SPOOLMAN_DB_TYPE=postgresql
+#SPOOLMAN_DB_TYPE=postgresql
 
-# DB Setup, if not using sqlite
-SPOOLMAN_DB_HOST=postgres.squeak.house
-SPOOLMAN_DB_PORT=5432
-SPOOLMAN_DB_NAME="{{ .Data.data.DB_NAME }}"
-SPOOLMAN_DB_USERNAME="{{ .Data.data.DB_USERNAME }}"
-SPOOLMAN_DB_PASSWORD="{{ .Data.data.DB_PASSWORD }}"
+# SPOOLMAN_DB_HOST=postgres.squeak.house
+# SPOOLMAN_DB_PORT=5432
+# SPOOLMAN_DB_NAME="{{ .Data.data.DB_NAME }}"
+# SPOOLMAN_DB_USERNAME="{{ .Data.data.DB_USERNAME }}"
+# SPOOLMAN_DB_PASSWORD="{{ .Data.data.DB_PASSWORD }}"
 
 # Query parameters for the database connection, e.g. set to `unix_socket=/path/to/mysql.sock` to connect using a MySQL socket.
 #SPOOLMAN_DB_QUERY=
@@ -181,5 +179,7 @@ SPOOLMAN_DB_PASSWORD="{{ .Data.data.DB_PASSWORD }}"
 
 # {{ end }}
 EOH
+      }
+    }
   }
 }
