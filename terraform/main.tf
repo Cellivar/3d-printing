@@ -15,16 +15,6 @@ locals {
   }
 }
 
-resource "nomad_job" "printer-services" {
-  jobspec = templatefile(
-    "${local.tmpldir}/printer_services.nomad.hcl",
-    {
-      fluidd_img_version   = local.fluidd_img_version
-      spoolman_img_version = local.spoolman_img_version
-    }
-  )
-}
-
 data "vault_kv_secret_v2" "ceph" {
   mount = "secret"
   name  = "ceph/config"

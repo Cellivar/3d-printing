@@ -108,20 +108,20 @@ job "3DPrinter-Services" {
         env = true
         data = <<EOH
 # App config
-# {{ with secret "secret/apps/printers/spoolman" }}
+# {{ with secret "secret/apps/spoolman" }}
 # Host and port to listen on
 SPOOLMAN_HOST=0.0.0.0
 SPOOLMAN_PORT=7912
 
 # DB Type: sqlite, mysql, postgresql, cockroachdb
 # Default if not set: sqlite
-#SPOOLMAN_DB_TYPE=postgresql
+SPOOLMAN_DB_TYPE=postgres
 
-# SPOOLMAN_DB_HOST=postgres.squeak.house
-# SPOOLMAN_DB_PORT=5432
-# SPOOLMAN_DB_NAME="{{ .Data.data.DB_NAME }}"
-# SPOOLMAN_DB_USERNAME="{{ .Data.data.DB_USERNAME }}"
-# SPOOLMAN_DB_PASSWORD="{{ .Data.data.DB_PASSWORD }}"
+SPOOLMAN_DB_HOST=postgres.squeak.house
+SPOOLMAN_DB_PORT=5432
+SPOOLMAN_DB_NAME="${database_name}"
+SPOOLMAN_DB_USERNAME="{{ .Data.data.DB_USERNAME }}"
+SPOOLMAN_DB_PASSWORD="{{ .Data.data.DB_PASSWORD }}"
 
 # Query parameters for the database connection, e.g. set to `unix_socket=/path/to/mysql.sock` to connect using a MySQL socket.
 #SPOOLMAN_DB_QUERY=
