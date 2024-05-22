@@ -50,6 +50,113 @@ job "3DPrinter-Services" {
     }
   }
 
+  group "manyfold" {
+    count = 1
+
+    restart {
+      attempts = 300
+      delay    = "5s"
+      interval = "30m"
+      mode     = "delay"
+    }
+
+    network {
+      port "manyfold" { to = 3214 }
+      port "redis" { to = 6379 }
+    }
+
+    volume "manyfold" {
+      type            = "csi"
+      read_only       = false
+      source          = "${manyfold_volume_name}"
+      attachment_mode = "file-system"
+      access_mode     = "single-node-writer"
+
+      mount_options {
+        fs_type = "ext4"
+      }
+    }
+
+    task "manyfold" {
+      driver = "docker"
+      config {
+        image = "ghcr.io/manyfold3d/manyfold:${manyfold_img_version}"
+        ports = ["manyfold"]
+      }
+
+      resources {
+        cpu        = 500
+        memory     = 1000
+        memory_max = 2000
+      }
+
+      volume_mount {
+        volume      = "manyfold"
+        destination = "/libraries"
+      }
+
+      template {
+        destination = "secrets/vars.env"
+        change_mode = "restart"
+        env         = true
+        data        = <<EOH
+# {{ with secret "secret/apps/manyfold" }}
+
+SECRET_KEY_BASE="{{ .Data.data.SECRET_KEY_BASE }}"
+
+DATABASE_HOST="postgres.squeak.house:5432"
+DATABASE_USER="{{ .Data.data.POSTGRES_USER }}"
+DATABASE_PASSWORD="{{ .Data.data.POSTGRES_PASSWORD }}"
+DATABASE_NAME="${manyfold_database}"
+
+REDIS_URL="redis://{{ env "NOMAD_ADDR_redis" }}/1"
+
+PUBLIC_HOSTNAME="manyfold.squeak.house"
+# {{ end }}
+EOH
+      }
+
+      vault {
+        policies    = ["ecowitt-policy"]
+        change_mode = "restart"
+      }
+
+      service {
+        name = "$${TASK}"
+        port = "manyfold"
+        tags = [
+          "apps",
+          "urlprefix-manyfold.squeak.house:80/ redirect=301,https://manyfold.squeak.house$path",
+          "urlprefix-manyfold.squeak.house/",
+          "hostname"
+        ]
+        meta {
+          hostname = "manyfold.squeak.house"
+        }
+        check {
+          name     = "alive"
+          type     = "http"
+          path     = "/health"
+          interval = "10s"
+          timeout  = "5s"
+        }
+      }
+    }
+
+    task "manyfold-redis" {
+      driver = "docker"
+      config {
+        image = "redis:7"
+        ports = ["redis"]
+      }
+
+      resources {
+        cpu    = 500
+        memory = 500
+      }
+    }
+  }
+
   group "spoolman" {
     count = 1
 
@@ -105,8 +212,8 @@ job "3DPrinter-Services" {
       template {
         destination = "secrets/vars.env"
         change_mode = "restart"
-        env = true
-        data = <<EOH
+        env         = true
+        data        = <<EOH
 # App config
 # {{ with secret "secret/apps/spoolman" }}
 # Host and port to listen on
@@ -119,7 +226,7 @@ SPOOLMAN_DB_TYPE=postgres
 
 SPOOLMAN_DB_HOST=postgres.squeak.house
 SPOOLMAN_DB_PORT=5432
-SPOOLMAN_DB_NAME="${database_name}"
+SPOOLMAN_DB_NAME="${spoolman_database}"
 SPOOLMAN_DB_USERNAME="{{ .Data.data.DB_USERNAME }}"
 SPOOLMAN_DB_PASSWORD="{{ .Data.data.DB_PASSWORD }}"
 

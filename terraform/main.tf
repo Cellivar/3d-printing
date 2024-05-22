@@ -5,6 +5,7 @@ locals {
   moonraker_img_version = "v0.8.0-324-ga3e4dac"
   fluidd_img_version    = "v1.28.1"
   spoolman_img_version  = "0.18"
+  manyfold_img_version  = "0.67.0"
 
   # Config files expected to be on every printer.
   common_configs = {
