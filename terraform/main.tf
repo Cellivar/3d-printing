@@ -45,6 +45,12 @@ module "printer_bildhauerkabine" {
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = ""
     })
+    "common/bttsfs2.cfg" = templatefile("${local.tmpldir}/common/bttsfs2.cfg", {
+      motion_pin       = "SENSOR7",
+      switch_pin       = "SENSOR6",
+      sensor_name      = "bttsfs2",
+      related_extruder = "extruder"
+    })
   })
 }
 
