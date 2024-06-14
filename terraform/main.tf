@@ -43,7 +43,7 @@ module "printer_bildhauerkabine" {
       canbus_uuid = "ad5151bfad1d"
     })
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
-      power_relay_gpio = ""
+      power_relay_gpio = "!gpio18"
     })
     "common/bttsfs2.cfg" = templatefile("${local.tmpldir}/common/bttsfs2.cfg", {
       motion_pin       = "SENSOR7",
