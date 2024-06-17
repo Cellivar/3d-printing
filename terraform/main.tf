@@ -46,8 +46,8 @@ module "printer_bildhauerkabine" {
       power_relay_gpio = "!gpio18"
     })
     "common/bttsfs2.cfg" = templatefile("${local.tmpldir}/common/bttsfs2.cfg", {
-      motion_pin       = "SENSOR7",
-      switch_pin       = "SENSOR6",
+      motion_pin       = "SENSOR6",
+      switch_pin       = "SENSOR5",
       sensor_name      = "bttsfs2",
       related_extruder = "extruder"
     })
