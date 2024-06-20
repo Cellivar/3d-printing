@@ -36,6 +36,7 @@ module "printer_bildhauerkabine" {
   printer_configs = merge(local.common_configs, {
     "main_printer.cfg"          = file("${local.tmpldir}/bildhauerkabine/main_printer.cfg")
     "macros/macros.cfg"         = file("${local.tmpldir}/bildhauerkabine/macros.cfg")
+    "macros/probe_dock.cfg"     = file("${local.tmpldir}/common/probe_dock.cfg")
     "pins/octopus_1_1_pins.cfg" = file("${local.tmpldir}/pins/octopus_1_1_pins.cfg")
     "pins/mini12864.cfg"        = file("${local.tmpldir}/pins/mini12864.cfg")
     "pins/ebb36.cfg" = templatefile("${local.tmpldir}/pins/ebb36.cfg", {
