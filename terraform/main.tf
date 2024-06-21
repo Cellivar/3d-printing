@@ -13,6 +13,7 @@ locals {
     "common/fluidd.cfg"      = file("${local.tmpldir}/common/fluidd.cfg")
     "common/timelapse.cfg"   = file("${local.tmpldir}/common/timelapse.cfg")
     "macros/util_macros.cfg" = file("${local.tmpldir}/common/util_macros.cfg")
+    "macros/heatsoak.cfg"    = file("${local.tmpldir}/common/heatsoak.cfg")
   }
 }
 
