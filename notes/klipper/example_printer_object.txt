@@ -1,0 +1,658 @@
+# Printer Object
+printer.bed_mesh:
+  printer.bed_mesh.mesh_matrix : [[-3.695625, -3.765833, -3.811667, -3.833125, -3.830208, -3.802917, -3.75125], [-3.744429, -3.782246, -3.812889, -3.836358, -3.852653, -3.861773, -3.863719], [-3.762585, -3.766866, -3.780737, -3.804198, -3.837247, -3.879886, -3.932114], [-3.759375, -3.730972, -3.727639, -3.749375, -3.796181, -3.868056, -3.965], [-3.744082, -3.685842, -3.666022, -3.684622, -3.741642, -3.837082, -3.970941], [-3.725988, -3.642754, -3.608314, -3.62267, -3.68582, -3.797764, -3.958503], [-3.714375, -3.612986, -3.566944, -3.57625, -3.640903, -3.760903, -3.93625], [-3.718526, -3.607817, -3.55434, -3.558094, -3.61908, -3.737298, -3.912747], [-3.747724, -3.638525, -3.582929, -3.580934, -3.63254, -3.737749, -3.896559], [-3.81125, -3.716389, -3.665139, -3.6575, -3.693472, -3.773056, -3.89625]]
+  printer.bed_mesh.mesh_max : (190.0, 289.99)
+  printer.bed_mesh.mesh_min : (10.0, 10.0)
+  printer.bed_mesh.probed_matrix : [[-3.695625, -3.833125, -3.75125], [-3.759375, -3.749375, -3.965], [-3.714375, -3.57625, -3.93625], [-3.81125, -3.6575, -3.89625]]
+  printer.bed_mesh.profile_name : default
+  printer.bed_mesh.profiles.default.mesh_params.algo : lagrange
+  printer.bed_mesh.profiles.default.mesh_params.max_x : 190.0
+  printer.bed_mesh.profiles.default.mesh_params.max_y : 289.99
+  printer.bed_mesh.profiles.default.mesh_params.mesh_x_pps : 2
+  printer.bed_mesh.profiles.default.mesh_params.mesh_y_pps : 2
+  printer.bed_mesh.profiles.default.mesh_params.min_x : 10.0
+  printer.bed_mesh.profiles.default.mesh_params.min_y : 10.0
+  printer.bed_mesh.profiles.default.mesh_params.tension : 0.2
+  printer.bed_mesh.profiles.default.mesh_params.x_count : 3
+  printer.bed_mesh.profiles.default.mesh_params.y_count : 4
+  printer.bed_mesh.profiles.default.points : ((-3.695625, -3.833125, -3.75125), (-3.759375, -3.749375, -3.965), (-3.714375, -3.57625, -3.93625), (-3.81125, -3.6575, -3.89625))
+printer.configfile:
+  printer.configfile.config.bed_mesh.horizontal_move_z : 3
+  printer.configfile.config.bed_mesh.mesh_max : 190, 290
+  printer.configfile.config.bed_mesh.mesh_min : 10, 10
+  printer.configfile.config.bed_mesh.probe_count : 3, 4
+  printer.configfile.config.bed_mesh.speed : 100
+  printer.configfile.config.extruder.adc_voltage : 3.3
+  printer.configfile.config.extruder.control : pid
+  printer.configfile.config.extruder.dir_pin : DRIVERE0_DIR
+  printer.configfile.config.extruder.enable_pin : DRIVERE0_EN
+  printer.configfile.config.extruder.filament_diameter : 1.750
+  printer.configfile.config.extruder.full_steps_per_rotation : 48
+  printer.configfile.config.extruder.gear_ratio : 50:1
+  printer.configfile.config.extruder.heater_pin : HEATERE0
+  printer.configfile.config.extruder.instantaneous_corner_velocity : 10.000
+  printer.configfile.config.extruder.max_extrude_cross_section : 20
+  printer.configfile.config.extruder.max_extrude_only_accel : 5000
+  printer.configfile.config.extruder.max_extrude_only_distance : 100.0
+  printer.configfile.config.extruder.max_extrude_only_velocity : 50000
+  printer.configfile.config.extruder.max_power : 0.7
+  printer.configfile.config.extruder.max_temp : 3000
+  printer.configfile.config.extruder.microsteps : 32
+  printer.configfile.config.extruder.min_extrude_temp : 0
+  printer.configfile.config.extruder.min_temp : -100
+  printer.configfile.config.extruder.nozzle_diameter : 0.400
+  printer.configfile.config.extruder.pid_kd : 53.008
+  printer.configfile.config.extruder.pid_ki : 0.448
+  printer.configfile.config.extruder.pid_kp : 9.749
+  printer.configfile.config.extruder.pressure_advance : 0.2
+  printer.configfile.config.extruder.pressure_advance_smooth_time : 0.150
+  printer.configfile.config.extruder.rotation_distance : 29
+  printer.configfile.config.extruder.sensor_pin : TEMPE0
+  printer.configfile.config.extruder.sensor_type : V51RNTC100K510RG
+  printer.configfile.config.extruder.step_pin : DRIVERE0_STEP
+  printer.configfile.config.extruder.step_pulse_duration : 0.000002
+  printer.configfile.config.extruder.voltage_offset : 0
+  printer.configfile.config.extruder1.adc_voltage : 3.3
+  printer.configfile.config.extruder1.control : pid
+  printer.configfile.config.extruder1.dir_pin : DRIVERE1_DIR
+  printer.configfile.config.extruder1.enable_pin : DRIVERE1_EN
+  printer.configfile.config.extruder1.filament_diameter : 1.750
+  printer.configfile.config.extruder1.full_steps_per_rotation : 48
+  printer.configfile.config.extruder1.gear_ratio : 50:1
+  printer.configfile.config.extruder1.heater_pin : HEATERE1
+  printer.configfile.config.extruder1.instantaneous_corner_velocity : 10.000
+  printer.configfile.config.extruder1.max_extrude_cross_section : 20
+  printer.configfile.config.extruder1.max_extrude_only_accel : 5000
+  printer.configfile.config.extruder1.max_extrude_only_distance : 100.0
+  printer.configfile.config.extruder1.max_extrude_only_velocity : 50000
+  printer.configfile.config.extruder1.max_power : 0.7
+  printer.configfile.config.extruder1.max_temp : 3000
+  printer.configfile.config.extruder1.microsteps : 32
+  printer.configfile.config.extruder1.min_extrude_temp : 0
+  printer.configfile.config.extruder1.min_temp : -100
+  printer.configfile.config.extruder1.nozzle_diameter : 0.400
+  printer.configfile.config.extruder1.pid_kd : 53.008
+  printer.configfile.config.extruder1.pid_ki : 0.448
+  printer.configfile.config.extruder1.pid_kp : 9.749
+  printer.configfile.config.extruder1.pressure_advance : 0.2
+  printer.configfile.config.extruder1.pressure_advance_smooth_time : 0.150
+  printer.configfile.config.extruder1.rotation_distance : 29
+  printer.configfile.config.extruder1.sensor_pin : TEMPE1
+  printer.configfile.config.extruder1.sensor_type : V51RNTC100K510RG
+  printer.configfile.config.extruder1.step_pin : DRIVERE1_STEP
+  printer.configfile.config.extruder1.step_pulse_duration : 0.000002
+  printer.configfile.config.extruder1.voltage_offset : 0
+  printer.configfile.config.fan.pin : FAN0
+  printer.configfile.config.firmware_retraction.retract_length : 1
+  printer.configfile.config.firmware_retraction.retract_speed : 20
+  printer.configfile.config.firmware_retraction.unretract_extra_length : 0
+  printer.configfile.config.firmware_retraction.unretract_speed : 10
+  printer.configfile.config.force_move.enable_force_move : true
+  printer.configfile.config.gcode_arcs.resolution : 1.0
+  printer.configfile.config.heater_bed.adc_voltage : 3.3
+  printer.configfile.config.heater_bed.control : pid
+  printer.configfile.config.heater_bed.heater_pin : BED_HEATER
+  printer.configfile.config.heater_bed.max_power : 1.0
+  printer.configfile.config.heater_bed.max_temp : 100
+  printer.configfile.config.heater_bed.min_temp : 0
+  printer.configfile.config.heater_bed.pid_kd : 472.700
+  printer.configfile.config.heater_bed.pid_ki : 1.224
+  printer.configfile.config.heater_bed.pid_kp : 48.112
+  printer.configfile.config.heater_bed.sensor_pin : BED_TEMP
+  printer.configfile.config.heater_bed.sensor_type : V510RNTC100K10KRG
+  printer.configfile.config.heater_bed.voltage_offset : 0
+  printer.configfile.config.idle_timeout.timeout : 3600
+  printer.configfile.config.input_shaper.shaper_freq_x : 54.2
+  printer.configfile.config.input_shaper.shaper_freq_y : 43.2
+  printer.configfile.config.input_shaper.shaper_type_x : mzv
+  printer.configfile.config.input_shaper.shaper_type_y : 2hump_ei
+  printer.configfile.config.mcu.restart_method : command
+  printer.configfile.config.mcu.serial : /dev/serial/by-id/usb-Klipper_stm32f103xe_32FFDD053050453910572343-if00
+  printer.configfile.config.printer.kinematics : cartesian
+  printer.configfile.config.printer.max_accel : 8000
+  printer.configfile.config.printer.max_velocity : 200
+  printer.configfile.config.printer.max_z_accel : 1000
+  printer.configfile.config.printer.max_z_velocity : 13
+  printer.configfile.config.printer.minimum_cruise_ratio : 0.625
+  printer.configfile.config.printer.square_corner_velocity : 5.0
+  printer.configfile.config.probe.activate_gcode :
+  printer.configfile.config.probe.deactivate_on_each_sample : True
+  printer.configfile.config.probe.lift_speed : 5
+  printer.configfile.config.probe.pin : !PROBE0
+  printer.configfile.config.probe.sample_retract_dist : 3.0
+  printer.configfile.config.probe.samples : 3
+  printer.configfile.config.probe.samples_result : median
+  printer.configfile.config.probe.samples_tolerance : 0.1
+  printer.configfile.config.probe.samples_tolerance_retries : 5
+  printer.configfile.config.probe.speed : 3
+  printer.configfile.config.probe.x_offset : 0
+  printer.configfile.config.probe.y_offset : 0
+  printer.configfile.config.probe.z_offset : -0.160
+  printer.configfile.config.save_variables.filename : /var/printer_data/config/xvariables.cfg
+  printer.configfile.config.screws_tilt_adjust.horizontal_move_z : 7
+  printer.configfile.config.screws_tilt_adjust.screw1 : 30, 5
+  printer.configfile.config.screws_tilt_adjust.screw1_name : 'Rear Left'
+  printer.configfile.config.screws_tilt_adjust.screw2 : 30, 300
+  printer.configfile.config.screws_tilt_adjust.screw2_name : 'Rear Right'
+  printer.configfile.config.screws_tilt_adjust.screw3 : 170, 300
+  printer.configfile.config.screws_tilt_adjust.screw3_name : 'Front Right'
+  printer.configfile.config.screws_tilt_adjust.screw4 : 170, 5
+  printer.configfile.config.screws_tilt_adjust.screw4_name : 'Front Left'
+  printer.configfile.config.screws_tilt_adjust.speed : 180
+  printer.configfile.config.stepper_x.dir_pin : DRIVERX_DIR
+  printer.configfile.config.stepper_x.enable_pin : !DRIVERX_EN
+  printer.configfile.config.stepper_x.endstop_pin : DRIVERX_END
+  printer.configfile.config.stepper_x.full_steps_per_rotation : 200
+  printer.configfile.config.stepper_x.homing_positive_dir : false
+  printer.configfile.config.stepper_x.homing_retract_dist : 5
+  printer.configfile.config.stepper_x.homing_speed : 50
+  printer.configfile.config.stepper_x.microsteps : 32
+  printer.configfile.config.stepper_x.position_endstop : -1
+  printer.configfile.config.stepper_x.position_max : 209
+  printer.configfile.config.stepper_x.position_min : -2
+  printer.configfile.config.stepper_x.rotation_distance : 40
+  printer.configfile.config.stepper_x.second_homing_speed : 5
+  printer.configfile.config.stepper_x.step_pin : DRIVERX_STEP
+  printer.configfile.config.stepper_x.step_pulse_duration : 0.000008
+  printer.configfile.config.stepper_y.dir_pin : DRIVERY_DIR
+  printer.configfile.config.stepper_y.enable_pin : !DRIVERY_EN
+  printer.configfile.config.stepper_y.endstop_pin : !DRIVERY_END
+  printer.configfile.config.stepper_y.full_steps_per_rotation : 200
+  printer.configfile.config.stepper_y.homing_positive_dir : false
+  printer.configfile.config.stepper_y.homing_retract_dist : 15
+  printer.configfile.config.stepper_y.homing_speed : 50
+  printer.configfile.config.stepper_y.microsteps : 32
+  printer.configfile.config.stepper_y.position_endstop : 46
+  printer.configfile.config.stepper_y.position_max : 307
+  printer.configfile.config.stepper_y.position_min : -2
+  printer.configfile.config.stepper_y.rotation_distance : 40
+  printer.configfile.config.stepper_y.second_homing_speed : 5
+  printer.configfile.config.stepper_y.step_pin : DRIVERY_STEP
+  printer.configfile.config.stepper_y.step_pulse_duration : 0.000008
+  printer.configfile.config.stepper_z.dir_pin : DRIVERZ_DIR
+  printer.configfile.config.stepper_z.enable_pin : !DRIVERZ_EN
+  printer.configfile.config.stepper_z.endstop_pin : !DRIVERZ_END
+  printer.configfile.config.stepper_z.full_steps_per_rotation : 200
+  printer.configfile.config.stepper_z.homing_positive_dir : false
+  printer.configfile.config.stepper_z.homing_retract_dist : 10
+  printer.configfile.config.stepper_z.homing_speed : 25
+  printer.configfile.config.stepper_z.microsteps : 32
+  printer.configfile.config.stepper_z.position_endstop : 5.0
+  printer.configfile.config.stepper_z.position_max : 335
+  printer.configfile.config.stepper_z.position_min : -5
+  printer.configfile.config.stepper_z.rotation_distance : 4
+  printer.configfile.config.stepper_z.second_homing_speed : 5
+  printer.configfile.config.stepper_z.step_pin : DRIVERZ_STEP
+  printer.configfile.config['bed_mesh default'].algo : lagrange
+  printer.configfile.config['bed_mesh default'].max_x : 190.0
+  printer.configfile.config['bed_mesh default'].max_y : 289.99
+  printer.configfile.config['bed_mesh default'].mesh_x_pps : 2
+  printer.configfile.config['bed_mesh default'].mesh_y_pps : 2
+  printer.configfile.config['bed_mesh default'].min_x : 10.0
+  printer.configfile.config['bed_mesh default'].min_y : 10.0
+  printer.configfile.config['bed_mesh default'].points :
+  printer.configfile.config['bed_mesh default'].tension : 0.2
+  printer.configfile.config['bed_mesh default'].version : 1
+  printer.configfile.config['bed_mesh default'].x_count : 3
+  printer.configfile.config['bed_mesh default'].y_count : 4
+  printer.configfile.config['gcode_macro _START_PRINT'].description : Power on motion system, home, set temperature and initiate printing
+  printer.configfile.config['gcode_macro _START_PRINT'].gcode :
+  printer.configfile.config['gcode_macro T10'].description : No real action, just for displaying correct color in Orcaslicer and prevent warning message from Klipper
+  printer.configfile.config['gcode_macro T10'].gcode :
+  printer.configfile.config['gcode_macro T9'].description : No real action, just for displaying correct color in Orcaslicer and prevent warning message from Klipper
+  printer.configfile.config['gcode_macro T9'].gcode :
+  printer.configfile.config['output_pin _STEPPER_MOTOR_POWER'].pin : POWER0
+  printer.configfile.config['output_pin _STEPPER_MOTOR_POWER'].value : 1
+  printer.configfile.config['output_pin beeper_cetus2'].cycle_time : 0.0005
+  printer.configfile.config['output_pin beeper_cetus2'].pin : BEEP0
+  printer.configfile.config['output_pin beeper_cetus2'].pwm : True
+  printer.configfile.config['output_pin beeper_cetus2'].shutdown_value : 0
+  printer.configfile.config['output_pin beeper_cetus2'].value : 0
+  printer.configfile.config['temperature_sensor host_temp'].max_temp : 100
+  printer.configfile.config['temperature_sensor host_temp'].min_temp : 0
+  printer.configfile.config['temperature_sensor host_temp'].sensor_type : temperature_host
+  printer.configfile.config['temperature_sensor mcu_temp'].max_temp : 100
+  printer.configfile.config['temperature_sensor mcu_temp'].min_temp : 0
+  printer.configfile.config['temperature_sensor mcu_temp'].sensor_type : temperature_mcu
+  printer.configfile.config['verify_heater heater_bed'].check_gain_time : 140
+  printer.configfile.save_config_pending : False
+  printer.configfile.settings.bed_mesh.adaptive_margin : 0.0
+  printer.configfile.settings.bed_mesh.algorithm : lagrange
+  printer.configfile.settings.bed_mesh.bicubic_tension : 0.2
+  printer.configfile.settings.bed_mesh.fade_end : 0.0
+  printer.configfile.settings.bed_mesh.fade_start : 1.0
+  printer.configfile.settings.bed_mesh.horizontal_move_z : 3.0
+  printer.configfile.settings.bed_mesh.mesh_max : (190.0, 290.0)
+  printer.configfile.settings.bed_mesh.mesh_min : (10.0, 10.0)
+  printer.configfile.settings.bed_mesh.mesh_pps : (2, 2)
+  printer.configfile.settings.bed_mesh.move_check_distance : 5.0
+  printer.configfile.settings.bed_mesh.probe_count : (3, 4)
+  printer.configfile.settings.bed_mesh.speed : 100.0
+  printer.configfile.settings.bed_mesh.split_delta_z : 0.025
+  printer.configfile.settings.extruder.adc_voltage : 3.3
+  printer.configfile.settings.extruder.control : pid
+  printer.configfile.settings.extruder.dir_pin : DRIVERE0_DIR
+  printer.configfile.settings.extruder.enable_pin : DRIVERE0_EN
+  printer.configfile.settings.extruder.filament_diameter : 1.75
+  printer.configfile.settings.extruder.full_steps_per_rotation : 48
+  printer.configfile.settings.extruder.gear_ratio : ((50.0, 1.0),)
+  printer.configfile.settings.extruder.heater_pin : HEATERE0
+  printer.configfile.settings.extruder.instantaneous_corner_velocity : 10.0
+  printer.configfile.settings.extruder.max_extrude_cross_section : 20.0
+  printer.configfile.settings.extruder.max_extrude_only_accel : 5000.0
+  printer.configfile.settings.extruder.max_extrude_only_distance : 100.0
+  printer.configfile.settings.extruder.max_extrude_only_velocity : 50000.0
+  printer.configfile.settings.extruder.max_power : 0.7
+  printer.configfile.settings.extruder.max_temp : 3000.0
+  printer.configfile.settings.extruder.microsteps : 32
+  printer.configfile.settings.extruder.min_extrude_temp : 0.0
+  printer.configfile.settings.extruder.min_temp : -100.0
+  printer.configfile.settings.extruder.nozzle_diameter : 0.4
+  printer.configfile.settings.extruder.pid_kd : 53.008
+  printer.configfile.settings.extruder.pid_ki : 0.448
+  printer.configfile.settings.extruder.pid_kp : 9.749
+  printer.configfile.settings.extruder.pressure_advance : 0.2
+  printer.configfile.settings.extruder.pressure_advance_smooth_time : 0.15
+  printer.configfile.settings.extruder.pwm_cycle_time : 0.1
+  printer.configfile.settings.extruder.rotation_distance : 29.0
+  printer.configfile.settings.extruder.sensor_pin : TEMPE0
+  printer.configfile.settings.extruder.sensor_type : V51RNTC100K510RG
+  printer.configfile.settings.extruder.smooth_time : 1.0
+  printer.configfile.settings.extruder.step_pin : DRIVERE0_STEP
+  printer.configfile.settings.extruder.step_pulse_duration : 2e-06
+  printer.configfile.settings.extruder.voltage_offset : 0.0
+  printer.configfile.settings.extruder1.adc_voltage : 3.3
+  printer.configfile.settings.extruder1.control : pid
+  printer.configfile.settings.extruder1.dir_pin : DRIVERE1_DIR
+  printer.configfile.settings.extruder1.enable_pin : DRIVERE1_EN
+  printer.configfile.settings.extruder1.filament_diameter : 1.75
+  printer.configfile.settings.extruder1.full_steps_per_rotation : 48
+  printer.configfile.settings.extruder1.gear_ratio : ((50.0, 1.0),)
+  printer.configfile.settings.extruder1.heater_pin : HEATERE1
+  printer.configfile.settings.extruder1.instantaneous_corner_velocity : 10.0
+  printer.configfile.settings.extruder1.max_extrude_cross_section : 20.0
+  printer.configfile.settings.extruder1.max_extrude_only_accel : 5000.0
+  printer.configfile.settings.extruder1.max_extrude_only_distance : 100.0
+  printer.configfile.settings.extruder1.max_extrude_only_velocity : 50000.0
+  printer.configfile.settings.extruder1.max_power : 0.7
+  printer.configfile.settings.extruder1.max_temp : 3000.0
+  printer.configfile.settings.extruder1.microsteps : 32
+  printer.configfile.settings.extruder1.min_extrude_temp : 0.0
+  printer.configfile.settings.extruder1.min_temp : -100.0
+  printer.configfile.settings.extruder1.nozzle_diameter : 0.4
+  printer.configfile.settings.extruder1.pid_kd : 53.008
+  printer.configfile.settings.extruder1.pid_ki : 0.448
+  printer.configfile.settings.extruder1.pid_kp : 9.749
+  printer.configfile.settings.extruder1.pressure_advance : 0.2
+  printer.configfile.settings.extruder1.pressure_advance_smooth_time : 0.15
+  printer.configfile.settings.extruder1.pwm_cycle_time : 0.1
+  printer.configfile.settings.extruder1.rotation_distance : 29.0
+  printer.configfile.settings.extruder1.sensor_pin : TEMPE1
+  printer.configfile.settings.extruder1.sensor_type : V51RNTC100K510RG
+  printer.configfile.settings.extruder1.smooth_time : 1.0
+  printer.configfile.settings.extruder1.step_pin : DRIVERE1_STEP
+  printer.configfile.settings.extruder1.step_pulse_duration : 2e-06
+  printer.configfile.settings.extruder1.voltage_offset : 0.0
+  printer.configfile.settings.fan.cycle_time : 0.01
+  printer.configfile.settings.fan.hardware_pwm : False
+  printer.configfile.settings.fan.kick_start_time : 0.1
+  printer.configfile.settings.fan.max_power : 1.0
+  printer.configfile.settings.fan.off_below : 0.0
+  printer.configfile.settings.fan.pin : FAN0
+  printer.configfile.settings.fan.shutdown_speed : 0.0
+  printer.configfile.settings.firmware_retraction.retract_length : 1.0
+  printer.configfile.settings.firmware_retraction.retract_speed : 20.0
+  printer.configfile.settings.firmware_retraction.unretract_extra_length : 0.0
+  printer.configfile.settings.firmware_retraction.unretract_speed : 10.0
+  printer.configfile.settings.force_move.enable_force_move : True
+  printer.configfile.settings.gcode_arcs.resolution : 1.0
+  printer.configfile.settings.heater_bed.adc_voltage : 3.3
+  printer.configfile.settings.heater_bed.control : pid
+  printer.configfile.settings.heater_bed.heater_pin : BED_HEATER
+  printer.configfile.settings.heater_bed.max_power : 1.0
+  printer.configfile.settings.heater_bed.max_temp : 100.0
+  printer.configfile.settings.heater_bed.min_extrude_temp : 170.0
+  printer.configfile.settings.heater_bed.min_temp : 0.0
+  printer.configfile.settings.heater_bed.pid_kd : 472.7
+  printer.configfile.settings.heater_bed.pid_ki : 1.224
+  printer.configfile.settings.heater_bed.pid_kp : 48.112
+  printer.configfile.settings.heater_bed.pwm_cycle_time : 0.1
+  printer.configfile.settings.heater_bed.sensor_pin : BED_TEMP
+  printer.configfile.settings.heater_bed.sensor_type : V510RNTC100K10KRG
+  printer.configfile.settings.heater_bed.smooth_time : 1.0
+  printer.configfile.settings.heater_bed.voltage_offset : 0.0
+  printer.configfile.settings.homing_override.axes : xyz
+  printer.configfile.settings.homing_override.gcode :
+  printer.configfile.settings.idle_timeout.gcode :
+  printer.configfile.settings.idle_timeout.timeout : 3600.0
+  printer.configfile.settings.input_shaper.damping_ratio_x : 0.1
+  printer.configfile.settings.input_shaper.damping_ratio_y : 0.1
+  printer.configfile.settings.input_shaper.shaper_freq_x : 54.2
+  printer.configfile.settings.input_shaper.shaper_freq_y : 43.2
+  printer.configfile.settings.input_shaper.shaper_type : mzv
+  printer.configfile.settings.input_shaper.shaper_type_x : mzv
+  printer.configfile.settings.input_shaper.shaper_type_y : 2hump_ei
+  printer.configfile.settings.mcu.baud : 250000
+  printer.configfile.settings.mcu.max_stepper_error : 2.5e-05
+  printer.configfile.settings.mcu.restart_method : command
+  printer.configfile.settings.mcu.serial : /dev/serial/by-id/usb-Klipper_stm32f103xe_32FFDD053050453910572343-if00
+  printer.configfile.settings.pause_resume.recover_velocity : 50.0
+  printer.configfile.settings.printer.kinematics : cartesian
+  printer.configfile.settings.printer.max_accel : 8000.0
+  printer.configfile.settings.printer.max_velocity : 200.0
+  printer.configfile.settings.printer.max_z_accel : 1000.0
+  printer.configfile.settings.printer.max_z_velocity : 13.0
+  printer.configfile.settings.printer.minimum_cruise_ratio : 0.625
+  printer.configfile.settings.printer.square_corner_velocity : 5.0
+  printer.configfile.settings.probe.activate_gcode :
+  printer.configfile.settings.probe.deactivate_gcode :
+  printer.configfile.settings.probe.deactivate_on_each_sample : True
+  printer.configfile.settings.probe.lift_speed : 5.0
+  printer.configfile.settings.probe.pin : !PROBE0
+  printer.configfile.settings.probe.sample_retract_dist : 3.0
+  printer.configfile.settings.probe.samples : 3
+  printer.configfile.settings.probe.samples_result : median
+  printer.configfile.settings.probe.samples_tolerance : 0.1
+  printer.configfile.settings.probe.samples_tolerance_retries : 5
+  printer.configfile.settings.probe.speed : 3.0
+  printer.configfile.settings.probe.x_offset : 0.0
+  printer.configfile.settings.probe.y_offset : 0.0
+  printer.configfile.settings.probe.z_offset : -0.16
+  printer.configfile.settings.respond.default_prefix : echo:
+  printer.configfile.settings.respond.default_type : echo
+  printer.configfile.settings.save_variables.filename : /var/printer_data/config/xvariables.cfg
+  printer.configfile.settings.screws_tilt_adjust.horizontal_move_z : 7.0
+  printer.configfile.settings.screws_tilt_adjust.screw_thread : CW-M3
+  printer.configfile.settings.screws_tilt_adjust.screw1 : (30.0, 5.0)
+  printer.configfile.settings.screws_tilt_adjust.screw1_name : 'Rear Left'
+  printer.configfile.settings.screws_tilt_adjust.screw2 : (30.0, 300.0)
+  printer.configfile.settings.screws_tilt_adjust.screw2_name : 'Rear Right'
+  printer.configfile.settings.screws_tilt_adjust.screw3 : (170.0, 300.0)
+  printer.configfile.settings.screws_tilt_adjust.screw3_name : 'Front Right'
+  printer.configfile.settings.screws_tilt_adjust.screw4 : (170.0, 5.0)
+  printer.configfile.settings.screws_tilt_adjust.screw4_name : 'Front Left'
+  printer.configfile.settings.screws_tilt_adjust.speed : 180.0
+  printer.configfile.settings.stepper_x.dir_pin : DRIVERX_DIR
+  printer.configfile.settings.stepper_x.enable_pin : !DRIVERX_EN
+  printer.configfile.settings.stepper_x.endstop_pin : DRIVERX_END
+  printer.configfile.settings.stepper_x.full_steps_per_rotation : 200
+  printer.configfile.settings.stepper_x.gear_ratio : ()
+  printer.configfile.settings.stepper_x.homing_positive_dir : False
+  printer.configfile.settings.stepper_x.homing_retract_dist : 5.0
+  printer.configfile.settings.stepper_x.homing_retract_speed : 50.0
+  printer.configfile.settings.stepper_x.homing_speed : 50.0
+  printer.configfile.settings.stepper_x.microsteps : 32
+  printer.configfile.settings.stepper_x.position_endstop : -1.0
+  printer.configfile.settings.stepper_x.position_max : 209.0
+  printer.configfile.settings.stepper_x.position_min : -2.0
+  printer.configfile.settings.stepper_x.rotation_distance : 40.0
+  printer.configfile.settings.stepper_x.second_homing_speed : 5.0
+  printer.configfile.settings.stepper_x.step_pin : DRIVERX_STEP
+  printer.configfile.settings.stepper_x.step_pulse_duration : 8e-06
+  printer.configfile.settings.stepper_y.dir_pin : DRIVERY_DIR
+  printer.configfile.settings.stepper_y.enable_pin : !DRIVERY_EN
+  printer.configfile.settings.stepper_y.endstop_pin : !DRIVERY_END
+  printer.configfile.settings.stepper_y.full_steps_per_rotation : 200
+  printer.configfile.settings.stepper_y.gear_ratio : ()
+  printer.configfile.settings.stepper_y.homing_positive_dir : False
+  printer.configfile.settings.stepper_y.homing_retract_dist : 15.0
+  printer.configfile.settings.stepper_y.homing_retract_speed : 50.0
+  printer.configfile.settings.stepper_y.homing_speed : 50.0
+  printer.configfile.settings.stepper_y.microsteps : 32
+  printer.configfile.settings.stepper_y.position_endstop : 46.0
+  printer.configfile.settings.stepper_y.position_max : 307.0
+  printer.configfile.settings.stepper_y.position_min : -2.0
+  printer.configfile.settings.stepper_y.rotation_distance : 40.0
+  printer.configfile.settings.stepper_y.second_homing_speed : 5.0
+  printer.configfile.settings.stepper_y.step_pin : DRIVERY_STEP
+  printer.configfile.settings.stepper_y.step_pulse_duration : 8e-06
+  printer.configfile.settings.stepper_z.dir_pin : DRIVERZ_DIR
+  printer.configfile.settings.stepper_z.enable_pin : !DRIVERZ_EN
+  printer.configfile.settings.stepper_z.endstop_pin : !DRIVERZ_END
+  printer.configfile.settings.stepper_z.full_steps_per_rotation : 200
+  printer.configfile.settings.stepper_z.gear_ratio : ()
+  printer.configfile.settings.stepper_z.homing_positive_dir : False
+  printer.configfile.settings.stepper_z.homing_retract_dist : 10.0
+  printer.configfile.settings.stepper_z.homing_retract_speed : 25.0
+  printer.configfile.settings.stepper_z.homing_speed : 25.0
+  printer.configfile.settings.stepper_z.microsteps : 32
+  printer.configfile.settings.stepper_z.position_endstop : 5.0
+  printer.configfile.settings.stepper_z.position_max : 335.0
+  printer.configfile.settings.stepper_z.position_min : -5.0
+  printer.configfile.settings.stepper_z.rotation_distance : 4.0
+  printer.configfile.settings.stepper_z.second_homing_speed : 5.0
+  printer.configfile.settings.stepper_z.step_pin : DRIVERZ_STEP
+  printer.configfile.settings.virtual_sdcard.on_error_gcode : CANCEL_PRINT
+  printer.configfile.settings.virtual_sdcard.path : /var/printer_data/gcodes
+  printer.configfile.settings['adc_temperature v510rntc100k10krg'].temperature1 : 0.0
+  printer.configfile.settings['adc_temperature v510rntc100k10krg'].temperature2 : 100.0
+  printer.configfile.settings['adc_temperature v510rntc100k10krg'].temperature3 : 300.0
+  printer.configfile.settings['adc_temperature v510rntc100k10krg'].voltage1 : 0.098328417
+  printer.configfile.settings['adc_temperature v510rntc100k10krg'].voltage2 : 1.934349355
+  printer.configfile.settings['adc_temperature v510rntc100k10krg'].voltage3 : 3.109599239
+  printer.configfile.settings['adc_temperature v51rntc100k510rg'].temperature1 : 0.0
+  printer.configfile.settings['adc_temperature v51rntc100k510rg'].temperature2 : 100.0
+  printer.configfile.settings['adc_temperature v51rntc100k510rg'].temperature3 : 200.0
+  printer.configfile.settings['adc_temperature v51rntc100k510rg'].temperature4 : 300.0
+  printer.configfile.settings['adc_temperature v51rntc100k510rg'].voltage1 : 0.005167951
+  printer.configfile.settings['adc_temperature v51rntc100k510rg'].voltage2 : 0.236675573
+  printer.configfile.settings['adc_temperature v51rntc100k510rg'].voltage3 : 1.512265253
+  printer.configfile.settings['adc_temperature v51rntc100k510rg'].voltage4 : 2.537313433
+  printer.configfile.settings['bed_mesh default'].algo : lagrange
+  printer.configfile.settings['bed_mesh default'].max_x : 190.0
+  printer.configfile.settings['bed_mesh default'].max_y : 289.99
+  printer.configfile.settings['bed_mesh default'].mesh_x_pps : 2
+  printer.configfile.settings['bed_mesh default'].mesh_y_pps : 2
+  printer.configfile.settings['bed_mesh default'].min_x : 10.0
+  printer.configfile.settings['bed_mesh default'].min_y : 10.0
+  printer.configfile.settings['bed_mesh default'].points : ((-3.695625, -3.833125, -3.75125), (-3.759375, -3.749375, -3.965), (-3.714375, -3.57625, -3.93625), (-3.81125, -3.6575, -3.89625))
+  printer.configfile.settings['bed_mesh default'].tension : 0.2
+  printer.configfile.settings['bed_mesh default'].version : 1
+  printer.configfile.settings['bed_mesh default'].x_count : 3
+  printer.configfile.settings['bed_mesh default'].y_count : 4
+  printer.configfile.settings['board_pins tiertime_cetus2'].aliases : (('FAN0', 'PC9'), ('PROBE0', 'PC10'), ('BEEP0', 'PB1'), ('LIGHT0', 'PA0'), ('POWER0', 'PB8'), ('DRIVERX_EN', 'PB14'), ('DRIVERX_STEP', 'PB13'), ('DRIVERX_DIR', 'PB15'), ('DRIVERX_END', 'PA10'), ('DRIVERY_EN', 'PB11'), ('DRIVERY_STEP', 'PB10'), ('DRIVERY_DIR', 'PB12'), ('DRIVERY_END', 'PC7'), ('DRIVERZ_EN', 'PA7'), ('DRIVERZ_STEP', 'PA6'), ('DRIVERZ_DIR', 'PB0'), ('DRIVERZ_END', 'PC6'), ('DRIVERE0_EN', 'PB5'), ('DRIVERE0_STEP', 'PB6'), ('DRIVERE0_DIR', 'PB7'), ('DRIVERE1_EN', 'PD2'), ('DRIVERE1_STEP', 'PC11'), ('DRIVERE1_DIR', 'PC12'), ('BED_HEATER', 'PB9'), ('HEATERE0', 'PB3'), ('HEATERE1', 'PB4'), ('BED_TEMP', 'PA3'), ('TEMPE0', 'PA4'), ('TEMPE1', 'PA5'))
+  printer.configfile.settings['board_pins tiertime_cetus2'].mcu : ('mcu',)
+  printer.configfile.settings['delayed_gcode bed_mesh_init'].gcode :
+  printer.configfile.settings['delayed_gcode bed_mesh_init'].initial_duration : 0.01
+  printer.configfile.settings['gcode_macro beep'].description : G-Code macro
+  printer.configfile.settings['gcode_macro beep'].gcode :
+  printer.configfile.settings['gcode_macro search_vars'].description : G-Code macro
+  printer.configfile.settings['output_pin _stepper_motor_power'].maximum_mcu_duration : 0.0
+  printer.configfile.settings['output_pin _stepper_motor_power'].pin : POWER0
+  printer.configfile.settings['output_pin _stepper_motor_power'].pwm : False
+  printer.configfile.settings['output_pin _stepper_motor_power'].shutdown_value : 0.0
+  printer.configfile.settings['output_pin _stepper_motor_power'].value : 1.0
+  printer.configfile.settings['output_pin beeper_cetus2'].cycle_time : 0.0005
+  printer.configfile.settings['output_pin beeper_cetus2'].hardware_pwm : False
+  printer.configfile.settings['output_pin beeper_cetus2'].maximum_mcu_duration : 0.0
+  printer.configfile.settings['output_pin beeper_cetus2'].pin : BEEP0
+  printer.configfile.settings['output_pin beeper_cetus2'].pwm : True
+  printer.configfile.settings['output_pin beeper_cetus2'].scale : 1.0
+  printer.configfile.settings['output_pin beeper_cetus2'].shutdown_value : 0.0
+  printer.configfile.settings['output_pin beeper_cetus2'].value : 0.0
+  printer.configfile.settings['temperature_sensor host_temp'].max_temp : 100.0
+  printer.configfile.settings['temperature_sensor host_temp'].min_temp : 0.0
+  printer.configfile.settings['temperature_sensor host_temp'].sensor_path : /sys/class/thermal/thermal_zone0/temp
+  printer.configfile.settings['temperature_sensor host_temp'].sensor_type : temperature_host
+  printer.configfile.settings['temperature_sensor mcu_temp'].max_temp : 100.0
+  printer.configfile.settings['temperature_sensor mcu_temp'].min_temp : 0.0
+  printer.configfile.settings['temperature_sensor mcu_temp'].sensor_mcu : mcu
+  printer.configfile.settings['temperature_sensor mcu_temp'].sensor_type : temperature_mcu
+  printer.configfile.settings['verify_heater extruder'].check_gain_time : 20.0
+  printer.configfile.settings['verify_heater extruder'].heating_gain : 2.0
+  printer.configfile.settings['verify_heater extruder'].hysteresis : 5.0
+  printer.configfile.settings['verify_heater extruder'].max_error : 120.0
+  printer.configfile.settings['verify_heater extruder1'].check_gain_time : 20.0
+  printer.configfile.settings['verify_heater extruder1'].heating_gain : 2.0
+  printer.configfile.settings['verify_heater extruder1'].hysteresis : 5.0
+  printer.configfile.settings['verify_heater extruder1'].max_error : 120.0
+  printer.configfile.settings['verify_heater heater_bed'].check_gain_time : 140.0
+  printer.configfile.settings['verify_heater heater_bed'].heating_gain : 2.0
+  printer.configfile.settings['verify_heater heater_bed'].hysteresis : 5.0
+  printer.configfile.settings['verify_heater heater_bed'].max_error : 120.0
+  printer.configfile.warnings : []
+printer.display_status:
+  printer.display_status.message : None
+  printer.display_status.progress : 0.0
+printer.exclude_object:
+  printer.exclude_object.current_object : None
+  printer.exclude_object.excluded_objects : []
+  printer.exclude_object.objects : []
+printer.extruder:
+  printer.extruder.can_extrude : True
+  printer.extruder.motion_queue : None
+  printer.extruder.power : 0.0
+  printer.extruder.pressure_advance : 0.2
+  printer.extruder.smooth_time : 0.15
+  printer.extruder.target : 0.0
+  printer.extruder.temperature : 4.43
+printer.extruder1:
+  printer.extruder1.can_extrude : True
+  printer.extruder1.motion_queue : None
+  printer.extruder1.power : 0.0
+  printer.extruder1.pressure_advance : 0.2
+  printer.extruder1.smooth_time : 0.15
+  printer.extruder1.target : 0.0
+  printer.extruder1.temperature : 4.36
+printer.fan:
+  printer.fan.rpm : None
+  printer.fan.speed : 0.0
+printer.firmware_retraction:
+  printer.firmware_retraction.retract_length : 1.0
+  printer.firmware_retraction.retract_speed : 20.0
+  printer.firmware_retraction.unretract_extra_length : 0.0
+  printer.firmware_retraction.unretract_speed : 10.0
+printer.gcode_move:
+  printer.gcode_move.absolute_coordinates : True
+  printer.gcode_move.absolute_extrude : True
+  printer.gcode_move.extrude_factor : 1.0
+  printer.gcode_move.gcode_position : Coord(x=1.0, y=1.9999999999999998, z=20.0, e=0.0)
+  printer.gcode_move.homing_origin : Coord(x=0.0, y=0.0, z=0.0, e=0.0)
+  printer.gcode_move.position : Coord(x=1.0, y=1.9999999999999998, z=20.0, e=0.0)
+  printer.gcode_move.speed : 3000.0
+  printer.gcode_move.speed_factor : 1.0
+printer.heater_bed:
+  printer.heater_bed.power : 0.0
+  printer.heater_bed.target : 0.0
+  printer.heater_bed.temperature : 9.8
+printer.heaters:
+  printer.heaters.available_heaters : ['heater_bed', 'extruder', 'extruder1']
+  printer.heaters.available_monitors : []
+  printer.heaters.available_sensors : ['heater_bed', 'temperature_sensor mcu_temp', 'temperature_sensor host_temp', 'extruder', 'extruder1']
+printer.idle_timeout:
+  printer.idle_timeout.printing_time : 0.0
+  printer.idle_timeout.state : Ready
+printer.manual_probe:
+  printer.manual_probe.is_active : False
+  printer.manual_probe.z_position : None
+  printer.manual_probe.z_position_lower : None
+  printer.manual_probe.z_position_upper : None
+printer.mcu:
+  printer.mcu.last_stats.bytes_invalid : 0
+  printer.mcu.last_stats.bytes_read : 427235
+  printer.mcu.last_stats.bytes_retransmit : 9
+  printer.mcu.last_stats.bytes_write : 19277
+  printer.mcu.last_stats.freq : 72000061
+  printer.mcu.last_stats.mcu_awake : 0.004
+  printer.mcu.last_stats.mcu_task_avg : 1.2e-05
+  printer.mcu.last_stats.mcu_task_stddev : 9e-06
+  printer.mcu.last_stats.ready_bytes : 0
+  printer.mcu.last_stats.receive_seq : 2512
+  printer.mcu.last_stats.retransmit_seq : 2
+  printer.mcu.last_stats.rto : 0.025
+  printer.mcu.last_stats.rttvar : 0.0
+  printer.mcu.last_stats.send_seq : 2512
+  printer.mcu.last_stats.srtt : 0.0
+  printer.mcu.last_stats.upcoming_bytes : 0
+  printer.mcu.mcu_build_versions : 'gcc: (15:9-2019-q4-0ubuntu1) 9.2.1 20191025 (release) [ARM/arm-9-branch revision 277599] binutils: (2.34-4ubuntu1+13ubuntu1) 2.34'
+  printer.mcu.mcu_constants.ADC_MAX : 4095
+  printer.mcu.mcu_constants.BUS_PINS_i2c1 : PB6,PB7
+  printer.mcu.mcu_constants.BUS_PINS_i2c1a : PB8,PB9
+  printer.mcu.mcu_constants.BUS_PINS_i2c2 : PB10,PB11
+  printer.mcu.mcu_constants.BUS_PINS_spi1 : PA6,PA7,PA5
+  printer.mcu.mcu_constants.BUS_PINS_spi1a : PB4,PB5,PB3
+  printer.mcu.mcu_constants.BUS_PINS_spi2 : PB14,PB15,PB13
+  printer.mcu.mcu_constants.BUS_PINS_spi3 : PB4,PB5,PB3
+  printer.mcu.mcu_constants.CLOCK_FREQ : 72000000
+  printer.mcu.mcu_constants.MCU : stm32f103xe
+  printer.mcu.mcu_constants.PWM_MAX : 255
+  printer.mcu.mcu_constants.RESERVE_PINS_USB : PA11,PA12
+  printer.mcu.mcu_constants.STATS_SUMSQ_BASE : 256
+  printer.mcu.mcu_constants.STEPPER_BOTH_EDGE : 1
+  printer.mcu.mcu_version : v0.11.0-205-g5f0d252b
+printer.motion_report:
+  printer.motion_report.live_extruder_velocity : 0.0
+  printer.motion_report.live_position : Coord(x=1.0, y=1.9999999999999998, z=16.304375, e=0.0)
+  printer.motion_report.live_velocity : -1.7763568394002505e-15
+  printer.motion_report.steppers : ['extruder', 'extruder1', 'stepper_x', 'stepper_y', 'stepper_z']
+  printer.motion_report.trapq : ['extruder', 'extruder1', 'toolhead']
+printer.pause_resume:
+  printer.pause_resume.is_paused : False
+printer.print_stats:
+  printer.print_stats.filament_used : 0.0
+  printer.print_stats.filename :
+  printer.print_stats.info.current_layer : None
+  printer.print_stats.info.total_layer : None
+  printer.print_stats.message :
+  printer.print_stats.print_duration : 0.0
+  printer.print_stats.state : standby
+  printer.print_stats.total_duration : 0.0
+printer.probe:
+  printer.probe.last_query : False
+  printer.probe.last_z_result : 0.0
+  printer.probe.name : probe
+printer.save_variables:
+  printer.save_variables.variables.zoffset : -0.0631889921566306
+printer.screws_tilt_adjust:
+  printer.screws_tilt_adjust.error : False
+  printer.screws_tilt_adjust.max_deviation : None
+  printer.screws_tilt_adjust.results : []
+printer.stepper_enable:
+  printer.stepper_enable.steppers.extruder : False
+  printer.stepper_enable.steppers.extruder1 : False
+  printer.stepper_enable.steppers.stepper_x : True
+  printer.stepper_enable.steppers.stepper_y : True
+  printer.stepper_enable.steppers.stepper_z : True
+printer.system_stats:
+  printer.system_stats.cputime : 9117.516258617
+  printer.system_stats.memavail : 1028444
+  printer.system_stats.sysload : 0.9970703125
+printer.toolhead:
+  printer.toolhead.axis_maximum : Coord(x=209.0, y=307.0, z=335.0, e=0.0)
+  printer.toolhead.axis_minimum : Coord(x=-2.0, y=-2.0, z=-5.0, e=0.0)
+  printer.toolhead.estimated_print_time : 2022.6761755555556
+  printer.toolhead.extruder : extruder1
+  printer.toolhead.homed_axes : xyz
+  printer.toolhead.max_accel : 8000.0
+  printer.toolhead.max_velocity : 200.0
+  printer.toolhead.minimum_cruise_ratio : 0.625
+  printer.toolhead.position : Coord(x=1.0, y=1.9999999999999998, z=16.304375, e=0.0)
+  printer.toolhead.print_time : 52.491107583827635
+  printer.toolhead.square_corner_velocity : 5.0``
+  printer.toolhead.stalls : 0
+printer.virtual_sdcard:
+  printer.virtual_sdcard.file_path : None
+  printer.virtual_sdcard.file_position : 0
+  printer.virtual_sdcard.file_size : 0
+  printer.virtual_sdcard.is_active : False
+  printer.virtual_sdcard.progress : 0.0
+printer_macros:
+  printer['gcode_macro RESUME']:
+    printer['gcode_macro RESUME'].idle_state : False
+    printer['gcode_macro RESUME'].last_extruder_temp.restore : False
+    printer['gcode_macro RESUME'].last_extruder_temp.temp : 0
+    printer['gcode_macro RESUME'].restore_idle_timeout : 0
+printer['output_pin _STEPPER_MOTOR_POWER']:
+  printer['output_pin _STEPPER_MOTOR_POWER'].value : 1.0
+printer['output_pin beeper_cetus2']:
+  printer['output_pin beeper_cetus2'].value : 0.0
+printer['temperature_host host_temp']:
+  printer['temperature_host host_temp'].temperature : 49.66
+printer['temperature_sensor host_temp']:
+  printer['temperature_sensor host_temp'].measured_max_temp : 51.12
+  printer['temperature_sensor host_temp'].measured_min_temp : 44.3
+  printer['temperature_sensor host_temp'].temperature : 49.66
+printer['temperature_sensor mcu_temp']:
+  printer['temperature_sensor mcu_temp'].measured_max_temp : 38.14
+  printer['temperature_sensor mcu_temp'].measured_min_temp : 23.78
+  printer['temperature_sensor mcu_temp'].temperature : 37.98
