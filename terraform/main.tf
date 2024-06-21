@@ -1,9 +1,9 @@
 locals {
   tmpldir = "${path.module}/../configs/klipper"
 
-  klipper_img_version   = "v0.12.0-125-gbfb71bc2"
-  moonraker_img_version = "v0.8.0-324-ga3e4dac"
-  fluidd_img_version    = "v1.28.1"
+  klipper_img_version   = "v0.12.0-249-ga19d64fe"
+  moonraker_img_version = "v0.8.0-379-g346a3d7"
+  fluidd_img_version    = "v1.30.1"
   spoolman_img_version  = "0.18"
   manyfold_img_version  = "0.67.0"
 
