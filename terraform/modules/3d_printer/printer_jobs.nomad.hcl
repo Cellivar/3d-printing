@@ -168,6 +168,7 @@ EOF
       resources {
         cpu    = 1000
         memory = 200
+        memory_max = 500
       }
     }
 
@@ -225,6 +226,7 @@ EOF
       resources {
         cpu    = 100
         memory = 100
+        memory_max = 500
       }
 
       service {
