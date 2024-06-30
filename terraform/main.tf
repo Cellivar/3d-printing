@@ -14,6 +14,8 @@ locals {
     "common/timelapse.cfg"   = file("${local.tmpldir}/common/timelapse.cfg")
     "macros/util_macros.cfg" = file("${local.tmpldir}/common/util_macros.cfg")
     "macros/heatsoak.cfg"    = file("${local.tmpldir}/common/heatsoak.cfg")
+    "macros/spoolman.cfg"    = file("${local.tmpldir}/common/spoolman.cfg")
+    "macros/common.cfg"      = file("${local.tmpldir}/common/macros.cfg")
   }
 }
 
@@ -40,6 +42,7 @@ module "printer_bildhauerkabine" {
     "macros/probe_dock.cfg"     = file("${local.tmpldir}/common/probe_dock.cfg")
     "pins/octopus_1_1_pins.cfg" = file("${local.tmpldir}/pins/octopus_1_1_pins.cfg")
     "pins/mini12864.cfg"        = file("${local.tmpldir}/pins/mini12864.cfg")
+
     "pins/ebb36.cfg" = templatefile("${local.tmpldir}/pins/ebb36.cfg", {
       mcu_name    = "ebb36"
       canbus_uuid = "ad5151bfad1d"
@@ -73,6 +76,7 @@ module "printer_cetus2" {
     "macros/macros.cfg"    = file("${local.tmpldir}/cetus2/macros.cfg")
     "macros/mixing.cfg"    = file("${local.tmpldir}/cetus2/mixing.cfg")
     "pins/cetus2_pins.cfg" = file("${local.tmpldir}/pins/cetus2_pins.cfg")
+
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "gpio18"
     })
