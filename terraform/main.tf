@@ -1,8 +1,14 @@
+variable "klipper_img_version" {
+  default = "latest"
+}
+
+variable "moonraker_img_version" {
+  default = "latest"
+}
+
 locals {
   tmpldir = "${path.module}/../configs/klipper"
 
-  klipper_img_version   = "v0.12.0-249-ga19d64fe"
-  moonraker_img_version = "v0.8.0-379-g346a3d7"
   fluidd_img_version    = "v1.30.1"
   spoolman_img_version  = "0.18"
   manyfold_img_version  = "0.67.0"
@@ -32,8 +38,8 @@ module "printer_bildhauerkabine" {
   ceph_cluster_id = data.vault_kv_secret_v2.ceph.data.cluster_id
 
   printer_name          = "bildhauerkabine"
-  klipper_img_version   = local.klipper_img_version
-  moonraker_img_version = local.moonraker_img_version
+  klipper_img_version   = var.klipper_img_version
+  moonraker_img_version = var.moonraker_img_version
 
   # Config files specific to this printer, merged with the common list.
   printer_configs = merge(local.common_configs, {
@@ -51,10 +57,15 @@ module "printer_bildhauerkabine" {
       power_relay_gpio = "!gpio18"
     })
     "common/bttsfs2.cfg" = templatefile("${local.tmpldir}/common/bttsfs2.cfg", {
-      motion_pin       = "SENSOR6",
-      switch_pin       = "SENSOR5",
-      sensor_name      = "bttsfs2",
+      motion_pin       = "SENSOR6"
+      switch_pin       = "SENSOR5"
+      sensor_name      = "bttsfs2"
       related_extruder = "extruder"
+    })
+    "common/toolhead_voc.cfg" = templatefile("${local.tmpldir}/common/nevermore_sensor.cfg", {
+      sensor_name = "toolhead"
+      i2c_mcu = "ebb36"
+      i2c_bus = "i2c3_PB3_PB4"
     })
   })
 }
@@ -67,8 +78,8 @@ module "printer_cetus2" {
   ceph_cluster_id = data.vault_kv_secret_v2.ceph.data.cluster_id
 
   printer_name          = "cetus2"
-  klipper_img_version   = local.klipper_img_version
-  moonraker_img_version = local.moonraker_img_version
+  klipper_img_version   = var.klipper_img_version
+  moonraker_img_version = var.moonraker_img_version
 
   # Config files specific to this printer, merged with the common list.
   printer_configs = merge(local.common_configs, {
