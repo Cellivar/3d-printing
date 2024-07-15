@@ -22,6 +22,7 @@ locals {
     "macros/heatsoak.cfg"    = file("${local.tmpldir}/common/heatsoak.cfg")
     "macros/spoolman.cfg"    = file("${local.tmpldir}/common/spoolman.cfg")
     "macros/common.cfg"      = file("${local.tmpldir}/common/common_macros.cfg")
+    "macros/tunes.cfg"       = file("${local.tmpldir}/common/tunes.cfg")
   }
 }
 
