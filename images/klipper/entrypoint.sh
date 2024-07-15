@@ -7,7 +7,6 @@ mkdir -p $PRINTER_DATA/run \
   $PRINTER_DATA/gcodes \
   $PRINTER_DATA/logs \
   $PRINTER_DATA/config
-chown -R :1000 $PRINTER_DATA
 
 if [[ -z "${SKIP_CREATE_PRINTER_CFG}" ]]; then
   # The printer.cfg file is required to boot, but is overwritten by Klipper too.
