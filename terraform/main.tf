@@ -92,5 +92,9 @@ module "printer_cetus2" {
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "gpio18"
     })
+    # "pins/ercf_easy_brd.cfg" = templatefile("${local.tmpldir}/pins/ercf_easy_brd.cfg", {
+    #   mcu_name = "ercf"
+    #   mcu_serial = ""
+    # })
   })
 }
