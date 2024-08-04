@@ -130,6 +130,11 @@ job "Printer-${printer_name}" {
       env {
         # Don't log to file, let Nomad handle log collection.
         MOONRAKER_DISABLE_FILE_LOG = "y"
+        # Used for debugging issues
+        #MOONRAKER_VERBOSE_LOGGING="y"
+        # Work around issue with metadata extraction
+        MOONRAKER_ENABLE_MSGSPEC="n"
+        MOONRAKER_ENABLE_UVLOOP="n"
       }
 
       volume_mount {
