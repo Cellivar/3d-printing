@@ -38,6 +38,27 @@ target "klipper-hostmcu" {
   ]
 }
 
-group "default" {
+group "printer" {
   targets = ["moonraker", "klipper", "klipper-hostmcu"]
+}
+
+## A container for touchscreen-based single-webpage kiosks.
+
+variable "xkiosk_tag" {
+  default = "0.0.2"
+}
+
+target "xkiosk" {
+  context = "./xkiosk"
+  platforms = ["linux/arm64", "linux/amd64"]
+
+  output = [
+    "type=image,push=true,name=${registry}/cellivar/xkiosk:latest",
+    "type=image,push=true,name=${registry}/cellivar/xkiosk:${xkiosk_tag}"
+  ]
+}
+
+
+group "display" {
+  targets = ["xkiosk"]
 }

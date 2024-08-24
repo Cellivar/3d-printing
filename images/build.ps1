@@ -5,7 +5,7 @@ $headers = @{
 $env:klipper_tag   = Invoke-RestMethod -Headers $headers "https://api.github.com/repos/Klipper3d/klipper/commits/master"
 $env:moonraker_tag = Invoke-RestMethod -Headers $headers "https://api.github.com/repos/Arksine/moonraker/commits/master"
 
-docker buildx bake
+docker buildx bake printer
 
 Write-Host "Klipper tag: ${env:klipper_tag}"
 Write-Host "Moonraker tag: ${env:moonraker_tag}"

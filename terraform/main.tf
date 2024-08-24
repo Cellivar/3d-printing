@@ -8,6 +8,7 @@ variable "moonraker_img_version" {
 
 locals {
   tmpldir = "${path.module}/../configs/klipper"
+  jobdir = "${path.module}/job_templates"
 
   fluidd_img_version    = "v1.30.1"
   spoolman_img_version  = "0.18"

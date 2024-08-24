@@ -49,7 +49,7 @@ module "manyfold_volume" {
 
 resource "nomad_job" "printer-services" {
   jobspec = templatefile(
-    "${local.tmpldir}/printer_services.nomad.hcl",
+    "${local.jobdir}/printer_services.nomad.hcl",
     {
       fluidd_img_version   = local.fluidd_img_version
 
@@ -59,6 +59,15 @@ resource "nomad_job" "printer-services" {
       manyfold_img_version = local.manyfold_img_version
       manyfold_volume_name = module.manyfold_volume.volume_name
       manyfold_database    = postgresql_database.manyfold.name
+    }
+  )
+}
+
+resource "nomad_job" "padd_screen" {
+  jobspec = templatefile(
+    "${local.jobdir}/padd_screen.nomad.hcl",
+    {
+      homepage = "https://fluidd.squeak.house"
     }
   )
 }

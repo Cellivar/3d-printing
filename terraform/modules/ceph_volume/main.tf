@@ -1,6 +1,7 @@
 data "nomad_plugin" "ceph_plugin" {
   plugin_id             = var.nomad_plugin_id
   wait_for_registration = true
+  wait_for_healthy      = false
 }
 
 resource "nomad_csi_volume" "ceph_volume" {
