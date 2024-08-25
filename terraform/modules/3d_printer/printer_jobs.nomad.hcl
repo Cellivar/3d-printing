@@ -72,8 +72,7 @@ job "Printer-${printer_name}" {
 
       template {
         destination   = "local/consul-template.hcl"
-        change_mode   = "signal"
-        change_signal = "SIGHUP"
+        change_mode   = "restart"
         data = "{{ key \"${consul_template_key}\" }}"
       }
     }

@@ -51,10 +51,6 @@ module "printer_bildhauerkabine" {
     "pins/octopus_1_1_pins.cfg" = file("${local.tmpldir}/pins/octopus_1_1_pins.cfg")
     "pins/mini12864.cfg"        = file("${local.tmpldir}/pins/mini12864.cfg")
 
-    "pins/ebb36.cfg" = templatefile("${local.tmpldir}/pins/ebb36.cfg", {
-      mcu_name    = "ebb36"
-      canbus_uuid = "ad5151bfad1d"
-    })
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "!gpio18"
     })
@@ -70,6 +66,55 @@ module "printer_bildhauerkabine" {
       i2c_bus = "i2c3_PB3_PB4"
     })
   })
+
+  printer_conditional_configs = [
+    {
+      out_file = "pins/ebb36.cfg"
+      options  = [
+        {
+          # RapidBurner toolhead w/Dragon Ace
+          key       = "pins/ebb36_d1d"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/toolhead\" \"revo\") \"dragon\""
+          content   = templatefile("${local.tmpldir}/pins/ebb36.cfg", {
+            mcu_name    = "ebb36"
+            canbus_uuid = "ad5151bfad1d"
+          })
+        },
+        {
+          # DragonBurner toolhead w/Revo Voron
+          key       = "pins/ebb36_62f"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/toolhead\" \"revo\") \"revo\""
+          content   = templatefile("${local.tmpldir}/pins/ebb36.cfg", {
+            mcu_name    = "ebb36"
+            canbus_uuid = "cb63bcbb762f"
+          })
+        }
+      ]
+    },
+    {
+      out_file = "toolhead.cfg"
+      options = [
+        {
+          # RapidBurner toolhead w/Dragon Ace
+          key       = "toolhead/dragon"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/toolhead\" \"revo\") \"dragon\""
+          content   = templatefile("${local.tmpldir}/bildhauerkabine/toolhead_dragon.cfg", {
+            mcu_name    = "ebb36"
+            canbus_uuid = "ad5151bfad1d"
+          })
+        },
+        {
+          # DragonBurner toolhead w/Revo Voron
+          key       = "toolhead/revo"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/toolhead\" \"revo\") \"revo\""
+          content   = templatefile("${local.tmpldir}/bildhauerkabine/toolhead_revo.cfg", {
+            mcu_name    = "ebb36"
+            canbus_uuid = "cb63bcbb762f"
+          })
+        }
+      ]
+    }
+  ]
 }
 
 module "printer_cetus2" {
