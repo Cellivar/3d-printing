@@ -1,9 +1,9 @@
 variable "klipper_img_version" {
-  default = "latest"
+  default = "81de9a8615df667ae2ea6d2b0f9204e7f3b09bcc"
 }
 
 variable "moonraker_img_version" {
-  default = "latest"
+  default = "v0.9.2"
 }
 
 locals {
