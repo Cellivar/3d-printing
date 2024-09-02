@@ -60,11 +60,6 @@ module "printer_bildhauerkabine" {
       sensor_name      = "bttsfs2"
       related_extruder = "extruder"
     })
-    "common/toolhead_voc.cfg" = templatefile("${local.tmpldir}/common/nevermore_sensor.cfg", {
-      sensor_name = "toolhead"
-      i2c_mcu = "ebb36"
-      i2c_bus = "i2c3_PB3_PB4"
-    })
   })
 
   printer_conditional_configs = [
@@ -110,6 +105,20 @@ module "printer_bildhauerkabine" {
           content   = templatefile("${local.tmpldir}/bildhauerkabine/toolhead_revo.cfg", {
             mcu_name    = "ebb36"
             canbus_uuid = "cb63bcbb762f"
+          })
+        }
+      ]
+    },
+    {
+      out_file = "common/toolhead_voc.cfg"
+      options = [
+        {
+          key = "sensors/toolhead_voc"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/sensors/toolhead_voc\" \"true\") \"true\""
+          content = templatefile("${local.tmpldir}/common/nevermore_sensor.cfg", {
+            sensor_name = "toolhead"
+            i2c_mcu = "ebb36"
+            i2c_bus = "i2c3_PB3_PB4"
           })
         }
       ]
