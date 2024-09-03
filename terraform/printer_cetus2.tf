@@ -20,9 +20,40 @@ module "printer_cetus2" {
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "gpio18"
     })
-    # "pins/ercf_easy_brd.cfg" = templatefile("${local.tmpldir}/pins/ercf_easy_brd.cfg", {
-    #   mcu_name = "ercf"
-    #   mcu_serial = ""
-    # })
   })
+
+  printer_conditional_configs = [
+    {
+      out_file = "toolhead.cfg"
+      options = [
+        {
+          # Cetus2 toolhead with LGX Lite v2 extruders
+          key       = "toolhead/cetus2"
+          condition = "eq (keyOrDefault \"apps/3d_printers/cetus2_settings/toolhead\" \"mailbox\") \"cetus2\""
+          content   = templatefile("${local.tmpldir}/cetus2/toolhead_cetus2.cfg", {
+          })
+        },
+        {
+          # Mailbox toolhead w/Revo Voron
+          key       = "toolhead/mailbox"
+          condition = "eq (keyOrDefault \"apps/3d_printers/cetus2_settings/toolhead\" \"mailbox\") \"mailbox\""
+          content   = templatefile("${local.tmpldir}/cetus2/toolhead_mailbox.cfg", {
+          })
+        }
+      ]
+    },
+    {
+      out_file = "pins/ercf_easy_brd.cfg"
+      options = [
+        {
+          key = "pins/ercf_easy_brd"
+          condition = "eq (keyOrDefault \"apps/3d_printers/cetus2_settings/toolhead\" \"cetus2\") \"cetus2\""
+          content = templatefile("${local.tmpldir}/pins/ercf_easy_brd.cfg", {
+            mcu_name = "ercf"
+            mcu_serial = "" #TODO!
+          })
+        }
+       ]
+    }
+  ]
 }
