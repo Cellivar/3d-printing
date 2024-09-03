@@ -20,7 +20,7 @@ In the video they suggest using the 12mm socket wrench the printer comes with to
 
 ![image](https://user-images.githubusercontent.com/1441553/216794681-2701ead5-d420-4706-87df-1507c5c7c380.png)
 
-The shroud is not struturally necessary, it's only for looking nice and holding the fans.
+The shroud is not structurally necessary, it's only for looking nice and holding the fans.
 
 ### Parts
 
@@ -32,33 +32,24 @@ The arrows here identify pin 1, denoted by the square solder pad.
 
 ![image](https://user-images.githubusercontent.com/1441553/216796913-3664a22c-3c0b-497b-a23d-f21ae00aaeee.png)
 
+| Name                      | Pin | Pin | Name                      |
+| ------------------------- | --- | --- | ------------------------- |
+| Extruder 1 Pin 4          | 1   | 2   | Extruder 2 pin 3?         |
+| Extruder 1 Pin 3          | 3   | 4   | Extruder 2 pin 4?         |
+| Extruder 1 Pin 2          | 5   | 6   | Extruder 2 pin 2          |
+| Extruder 1 pin 1          | 7   | 8   | Extruder 2 pin 1          |
+| Hotend 1 pin 4 heater     | 9   | 10  | Hotend 1 pin 4 heater     |
+| Hotend common pin 3       | 11  | 12  | Hotend common pin 3       |
+| Hotend common pin 3       | 13  | 14  | Hotend common pin 3       |
+| Hotend 2 pin 4 heater     | 15  | 16  | Hotend 2 pin 4 heater     |
+| Part fan -V variable      | 17  | 18  | Hotend fans -V constant   |
+| Fan common +V12 pin 1     | 19  | 20  | Fan common +V12 pin 1     |
+| Hotend 1 pin 1 thermistor | 21  | 22  | Hotend 2 pin 1 thermistor |
+| Hotend 1 pin 2 thermistor | 23  | 24  | Hotend 2 pin 2 thermistor |
+
 * SKU BC1105-2 (Tiertime internal part number?)
 * JST-alike connectors are from hxhconnector.com, can't find the right part numbers. 2.5mm pitch?
 * 24 pin IDC rainbow cable `Pa2`
-    1. Extruder 1 Pin 4
-    2. Extruder 2 Pin 3
-    3. Extruder 1 Pin 3
-    4. Extruder 2 Pin 4
-    5. Extruder 1 Pin 2
-    6. Extruder 2 Pin 2
-    7. Extruder 1 Pin 1
-    8. Extruder 2 Pin 1
-    9. Hotend 1 Pin 4
-    10. Hotend 1 Pin 4
-    11. Hotend Common (Pin 3 on both hotend connectors)
-    12. Hotend Common
-    13. Hotend Common
-    14. Hotend Common
-    15. Hotend 2 Pin 4
-    16. Hotend 2 Pin 4
-    17. Part fan -V
-    18. Hotend fans -V (Pin 3 on both connectors)
-    19. Fan Common +V (Pin 1 on all fan connectors, 12V constant??)
-    20. Fan Common +V
-    21. Hotend 1 Pin 1
-    22. Hotend 2 Pin 1
-    23. Hotend 1 Pin 2
-    24. Hotend 2 Pin 2
 * Motor 1 4 pin connector (White) `PDa1`
     1. Red: ?
     2. Yellow: ?
@@ -81,15 +72,15 @@ The arrows here identify pin 1, denoted by the square solder pad.
     4. Red: Heater
 * Hotend fan 3-pin connector (both are wired together) `Pf3`
     1. Red +12V
-    2. Individually isolated and don't appear to be connected to anything else on the board?
-    3. Black -V
+    2. _Not connected_
+    3. Black -V constant
 * Part fan 2-pin connector `Pf2`
-    1. Red +V variable
-    2. Black -V
+    1. Red +12V
+    2. Black -V controlled
 
 #### Extruder Stack
 
-This is the full route of the filament thorugh the extruder module.
+This is the full route of the filament through the extruder module.
 
 * 3D printed guide tray
     * Mounted to bracket with four M2.5-0.4x7.5 hex-head (2mm hex)
@@ -124,7 +115,7 @@ The Cetus2 V2 extruder is a direct drive extruder with the filament gripping gea
     * Push torque: 900N
     * Shaft: 5mm x 13mm-ish
 
-The geared stepper motor is sandwitched against the black metal frame, then a white delrin? injection moulded part acts as the guideway for the filament. The bearing and e clip does not need to be removed to take off the delrin, it's just the two bolts holding it in.
+The geared stepper motor is sandwiched against the black metal frame, then a white delrin? injection moulded part acts as the guideway for the filament. The bearing and e clip does not need to be removed to take off the delrin, it's just the two bolts holding it in.
 
 The stock gear appears to be fairly rough machined steel of some sort, it's uncomfortably rough against my fingers and doesn't feature a tooth profile you'd expect for an actual gear. This implies it's custom stock for this purpose.
 
