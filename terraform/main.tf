@@ -10,9 +10,9 @@ locals {
   tmpldir = "${path.module}/../configs/klipper"
   jobdir = "${path.module}/job_templates"
 
-  fluidd_img_version    = "v1.30.1"
-  spoolman_img_version  = "0.18"
-  manyfold_img_version  = "0.67.0"
+  fluidd_img_version    = "v1.30.3"
+  spoolman_img_version  = "0.19"
+  manyfold_img_version  = "0.76.1"
 
   # Config files expected to be on every printer.
   common_configs = {
