@@ -88,7 +88,7 @@ module "printer_bildhauerkabine" {
             i2c_bus = "i2c3_PB3_PB4"
           })
         }
-       ]
+      ]
     }
   ]
 }
