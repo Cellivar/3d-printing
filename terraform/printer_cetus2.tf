@@ -15,7 +15,7 @@ module "printer_cetus2" {
     "main_printer.cfg"           = file("${local.tmpldir}/cetus2/main_printer.cfg")
     "macros/macros.cfg"          = file("${local.tmpldir}/cetus2/macros.cfg")
     "macros/mixing_extruder.cfg" = file("${local.tmpldir}/common/mixing_extruder.cfg")
-    "pins/cetus2_pins.cfg"       = file("${local.tmpldir}/pins/cetus2_pins.cfg")
+    "pins/skr_1_4.cfg"           = file("${local.tmpldir}/pins/skr_1_4.cfg")
 
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "gpio18"
