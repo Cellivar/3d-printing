@@ -63,11 +63,11 @@ resource "nomad_job" "printer-services" {
   )
 }
 
-resource "nomad_job" "padd_screen" {
-  jobspec = templatefile(
-    "${local.jobdir}/padd_screen.nomad.hcl",
-    {
-      homepage = "https://fluidd.squeak.house"
-    }
-  )
-}
+# resource "nomad_job" "padd_screen" {
+#   jobspec = templatefile(
+#     "${local.jobdir}/padd_screen.nomad.hcl",
+#     {
+#       homepage = "https://fluidd.squeak.house"
+#     }
+#   )
+# }

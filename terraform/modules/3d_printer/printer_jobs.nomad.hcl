@@ -1,5 +1,6 @@
 job "Printer-${printer_name}" {
   datacenters = ["squeakhouse"]
+  node_pool   = "printers"
 
   # Ensure this ends up on the printer node.
   priority = 75

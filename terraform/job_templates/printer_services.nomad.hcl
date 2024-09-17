@@ -34,11 +34,8 @@ job "3DPrinter-Services" {
           "apps",
           "urlprefix-fluidd.squeak.house:80/ redirect=301,https://fluidd.squeak.house$path",
           "urlprefix-fluidd.squeak.house/",
-          "hostname"
+          "hostname--fluidd.squeak.house"
         ]
-        meta {
-          hostname = "fluidd.squeak.house"
-        }
         check {
           name     = "alive"
           type     = "http"
@@ -132,11 +129,8 @@ job "3DPrinter-Services" {
           "apps",
           "urlprefix-manyfold.squeak.house:80/ redirect=301,https://manyfold.squeak.house$path",
           "urlprefix-manyfold.squeak.house/",
-          "hostname"
+          "hostname--manyfold.squeak.house"
         ]
-        meta {
-          hostname = "manyfold.squeak.house"
-        }
         check {
           name     = "alive"
           type     = "http"
@@ -194,11 +188,8 @@ job "3DPrinter-Services" {
           "apps",
           "urlprefix-spoolman.squeak.house:80/ redirect=301,https://spoolman.squeak.house$path",
           "urlprefix-spoolman.squeak.house/",
-          "hostname"
+          "hostname--spoolman.squeak.house"
         ]
-        meta {
-          hostname = "spoolman.squeak.house"
-        }
         check {
           name     = "alive"
           type     = "http"
@@ -290,6 +281,100 @@ job "3DPrinter-Services" {
 
           # {{ end }}
           EOH
+      }
+    }
+  }
+
+  group "chromium_fluidd" {
+    count = 1
+
+    restart {
+      attempts = 300
+      delay    = "5s"
+      interval = "30m"
+      mode     = "delay"
+    }
+
+    constraint {
+      attribute = "$${attr.cpu.arch}"
+      value     = "amd64"
+    }
+
+    network {
+      port "vnc" { to = 5901 }
+      port "webvnc" { to = 6901 }
+    }
+
+    task "chromium" {
+      driver = "docker"
+      config {
+        image = "accetto/ubuntu-vnc-xfce-chromium-g3:20.04"
+        ports = ["vnc", "webvnc"]
+        volumes = [
+          "local/chromium-browser.init:/home/headless/.chromium-browser.init"
+        ]
+
+        shm_size = ${256 * 1024 * 1024} # bytes
+      }
+
+      resources {
+        cpu    = 500
+        memory = 1024
+      }
+
+      service {
+        name = "$${TASK}"
+        port = "vnc"
+        tags = [
+          "apps",
+          "urlprefix-chromium_fluidd.squeak.house:80/ redirect=301,https://chromium_fluidd.squeak.house$path",
+          "urlprefix-chromium_fluidd.squeak.house/",
+          "hostname--chromium_fluidd.squeak.house"
+        ]
+      }
+
+      service {
+        name = "$${TASK}-webvnc"
+        port = "webvnc"
+        tags = [
+          "apps",
+          "urlprefix-chromium_fluidd_web.squeak.house:80/ redirect=301,https://chromium_fluidd_web.squeak.house$path",
+          "urlprefix-chromium_fluidd_web.squeak.house/",
+          "hostname--chromium_fluidd_web.squeak.house"
+        ]
+        check {
+          name     = "alive"
+          type     = "http"
+          path     = "/"
+          interval = "10s"
+          timeout  = "5s"
+        }
+      }
+
+      vault {
+        policies    = ["ecowitt-policy"]
+        change_mode = "restart"
+      }
+
+      template {
+        destination = "secrets/var.env"
+        change_mode = "restart"
+        env = true
+        data = <<-EOH
+        # {{ with secret "secret/apps/printers/fluidd_chromium" }}
+        VNC_PW={{ .Data.data.vnc_password }}
+        # {{ end }}
+        VNC_RESOLUTION=400x1280
+        NOVNC_HEARTBEAT=30
+        EOH
+      }
+
+      template {
+        destination = "local/chromium-browser.init"
+        perms = "755"
+        data = <<-EOH
+        CHROMIUM_FLAGS='--no-sandbox --disable-gpu --user-data-dir --window-size=400,1280 --window-position=0,0 --kiosk https://fluidd.squeak.house'
+        EOH
       }
     }
   }
