@@ -100,12 +100,12 @@ job "3DPrinter-Services" {
           # {{ with secret "secret/apps/manyfold" }}
 
           SECRET_KEY_BASE="{{ .Data.data.SECRET_KEY_BASE }}"
-          PUID: 1000
-          PGID: 1000
+          PUID=1000
+          PGID=1000
 
-          DATABASE_ADAPTER: postgresql
+          DATABASE_ADAPTER=postgresql
 
-          DATABASE_HOST="postgres.squeak.house:5432"
+          DATABASE_HOST="postgres.squeak.house"
           DATABASE_USER="{{ .Data.data.POSTGRES_USER }}"
           DATABASE_PASSWORD="{{ .Data.data.POSTGRES_PASSWORD }}"
           DATABASE_NAME="${manyfold_database}"

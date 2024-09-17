@@ -12,7 +12,7 @@ locals {
 
   fluidd_img_version    = "v1.30.3"
   spoolman_img_version  = "0.19"
-  manyfold_img_version  = "0.76.1"
+  manyfold_img_version  = "0.78.1"
 
   # Config files expected to be on every printer.
   common_configs = {
