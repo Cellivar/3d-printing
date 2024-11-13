@@ -87,6 +87,17 @@ job "3DPrinter-Services" {
         memory_max = 2000
       }
 
+      identity {
+        name = "vault_default"
+        aud = ["vault.io"]
+        file = true
+        ttl = "1h"
+      }
+
+      vault {
+        role = "nomad-workloads"
+      }
+
       volume_mount {
         volume      = "manyfold"
         destination = "/libraries"
@@ -97,7 +108,7 @@ job "3DPrinter-Services" {
         change_mode = "restart"
         env         = true
         data        = <<-EOH
-          # {{ with secret "secret/apps/manyfold" }}
+          # {{ with secret "secret/default/3DPrinter-Services/manyfold" }}
 
           SECRET_KEY_BASE="{{ .Data.data.SECRET_KEY_BASE }}"
           PUID=1000
@@ -115,11 +126,6 @@ job "3DPrinter-Services" {
           PUBLIC_HOSTNAME="manyfold.squeak.house"
           # {{ end }}
           EOH
-      }
-
-      vault {
-        policies    = ["ecowitt-policy"]
-        change_mode = "restart"
       }
 
       service {
@@ -181,6 +187,17 @@ job "3DPrinter-Services" {
         memory = 500
       }
 
+      identity {
+        name = "vault_default"
+        aud = ["vault.io"]
+        file = true
+        ttl = "1h"
+      }
+
+      vault {
+        role = "nomad-workloads"
+      }
+
       service {
         name = "$${TASK}"
         port = "spoolman"
@@ -199,18 +216,13 @@ job "3DPrinter-Services" {
         }
       }
 
-      vault {
-        policies    = ["ecowitt-policy"]
-        change_mode = "restart"
-      }
-
       template {
         destination = "secrets/vars.env"
         change_mode = "restart"
         env         = true
         data        = <<-EOH
           # App config
-          # {{ with secret "secret/apps/spoolman" }}
+          # {{ with secret "secret/default/3DPrinter-Services/spoolman" }}
           # Host and port to listen on
           SPOOLMAN_HOST=0.0.0.0
           SPOOLMAN_PORT=7912
@@ -285,7 +297,7 @@ job "3DPrinter-Services" {
     }
   }
 
-  group "chromium_fluidd" {
+  group "firefox_fluidd" {
     count = 1
 
     restart {
@@ -308,7 +320,7 @@ job "3DPrinter-Services" {
     task "chromium" {
       driver = "docker"
       config {
-        image = "accetto/ubuntu-vnc-xfce-chromium-g3:20.04"
+        image = "accetto/ubuntu-vnc-xfce-firefox-g3:20.04"
         ports = ["vnc", "webvnc"]
         volumes = [
           "local/chromium-browser.init:/home/headless/.chromium-browser.init"
@@ -322,14 +334,25 @@ job "3DPrinter-Services" {
         memory = 1024
       }
 
+      identity {
+        name = "vault_default"
+        aud = ["vault.io"]
+        file = true
+        ttl = "1h"
+      }
+
+      vault {
+        role = "nomad-workloads"
+      }
+
       service {
         name = "$${TASK}"
         port = "vnc"
         tags = [
           "apps",
-          "urlprefix-chromium_fluidd.squeak.house:80/ redirect=301,https://chromium_fluidd.squeak.house$path",
-          "urlprefix-chromium_fluidd.squeak.house/",
-          "hostname--chromium_fluidd.squeak.house"
+          "urlprefix-firefox_fluidd.squeak.house:80/ redirect=301,https://firefox_fluidd.squeak.house$path",
+          "urlprefix-firefox_fluidd.squeak.house/",
+          "hostname--firefox_fluidd.squeak.house"
         ]
       }
 
@@ -338,9 +361,9 @@ job "3DPrinter-Services" {
         port = "webvnc"
         tags = [
           "apps",
-          "urlprefix-chromium_fluidd_web.squeak.house:80/ redirect=301,https://chromium_fluidd_web.squeak.house$path",
-          "urlprefix-chromium_fluidd_web.squeak.house/",
-          "hostname--chromium_fluidd_web.squeak.house"
+          "urlprefix-firefox_fluidd_web.squeak.house:80/ redirect=301,https://firefox_fluidd_web.squeak.house$path",
+          "urlprefix-firefox_fluidd_web.squeak.house/",
+          "hostname--firefox_fluidd_web.squeak.house"
         ]
         check {
           name     = "alive"
@@ -351,17 +374,12 @@ job "3DPrinter-Services" {
         }
       }
 
-      vault {
-        policies    = ["ecowitt-policy"]
-        change_mode = "restart"
-      }
-
       template {
         destination = "secrets/var.env"
         change_mode = "restart"
         env = true
         data = <<-EOH
-        # {{ with secret "secret/apps/printers/fluidd_chromium" }}
+        # {{ with secret "secret/default/3DPrinter-Services/fluidd_vnc" }}
         VNC_PW={{ .Data.data.vnc_password }}
         # {{ end }}
         VNC_RESOLUTION=400x1280
@@ -369,11 +387,12 @@ job "3DPrinter-Services" {
         EOH
       }
 
+      # CHROMIUM_FLAGS='--no-sandbox --hide-scrollbars --disable-gpu --user-data-dir --window-size=400,1280 --app-shell-host-window-size=400x1280 --window-position=0,0 --kiosk https://fluidd.squeak.house'
       template {
         destination = "local/chromium-browser.init"
         perms = "755"
         data = <<-EOH
-        CHROMIUM_FLAGS='--no-sandbox --disable-gpu --user-data-dir --window-size=400,1280 --window-position=0,0 --kiosk https://fluidd.squeak.house'
+        CHROMIUM_FLAGS='--no-sandbox --hide-scrollbars --disable-gpu --user-data-dir --start-fullscreen https://fluidd.squeak.house'
         EOH
       }
     }
