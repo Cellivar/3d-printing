@@ -120,6 +120,7 @@ job "3DPrinter-Services" {
           DATABASE_USER="{{ .Data.data.POSTGRES_USER }}"
           DATABASE_PASSWORD="{{ .Data.data.POSTGRES_PASSWORD }}"
           DATABASE_NAME="${manyfold_database}"
+          DATABASE_CONNECTION_POOL=100
 
           REDIS_URL="redis://{{ env "NOMAD_ADDR_redis" }}/1"
 
