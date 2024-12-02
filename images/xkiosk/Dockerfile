@@ -1,5 +1,29 @@
 #FROM ubuntu:21.04
-FROM alpine:latest
+FROM ubuntu:24.04
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    gettext-base \
+    gir1.2-rsvg-2.0 \
+    gpg \
+    jq \
+    nano \
+    psmisc \
+    sudo \
+    tini \
+    wget \
+    dbus-x11 \
+    systemctl \
+    mousepad \
+    xauth \
+    xinit \
+    x11-xserver-utils \
+    xdg-utils \
+    xfce4 \
+    xfce4-terminal \
+    elementary-xfce-icon-theme
+
+RUN \
+
 
 # Install xorg server and related packges
 RUN <<EOF
