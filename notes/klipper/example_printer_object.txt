@@ -656,3 +656,19 @@ printer['temperature_sensor mcu_temp']:
   printer['temperature_sensor mcu_temp'].measured_max_temp : 38.14
   printer['temperature_sensor mcu_temp'].measured_min_temp : 23.78
   printer['temperature_sensor mcu_temp'].temperature : 37.98
+printer.endstop_phase
+  printer.endstop_phase.last_home.stepper_x.phase : 238
+  printer.endstop_phase.last_home.stepper_x.phases : 256
+  printer.endstop_phase.last_home.stepper_x.mcu_position : -1555
+  printer.endstop_phase.last_home.stepper_y.phase : 77
+  printer.endstop_phase.last_home.stepper_y.phases : 256
+  printer.endstop_phase.last_home.stepper_y.mcu_position : 67148
+  printer.endstop_phase.last_home.stepper_z.phase : 417
+  printer.endstop_phase.last_home.stepper_z.phases : 512
+  printer.endstop_phase.last_home.stepper_z.mcu_position : -86112
+  printer.endstop_phase.last_home.stepper_z1.phase : 415
+  printer.endstop_phase.last_home.stepper_z1.phases : 512
+  printer.endstop_phase.last_home.stepper_z1.mcu_position : -86112
+  printer.endstop_phase.last_home.stepper_z2.phase : 415
+  printer.endstop_phase.last_home.stepper_z2.phases : 512
+  printer.endstop_phase.last_home.stepper_z2.mcu_position : -86112
