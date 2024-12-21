@@ -20,10 +20,6 @@ module "printer_cetus2" {
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "gpio18"
     })
-    "pins/klipper_expander_pins.cfg" = templatefile("${local.tmpldir}/pins/klipper_expander_pins.cfg", {
-      mcu_name = "kehead"
-      mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32f042x6_0A8015000A4330534E373320-if00"
-    })
   })
 
   printer_conditional_configs = [
@@ -34,15 +30,29 @@ module "printer_cetus2" {
           # Cetus2 toolhead with LGX Lite v2 extruders
           key       = "toolhead/cetus2"
           condition = "eq (keyOrDefault \"apps/3d_printers/cetus2_settings/toolhead\" \"mailbox\") \"cetus2\""
-          content   = templatefile("${local.tmpldir}/cetus2/toolhead_cetus2.cfg", {
-          })
+          content   = file("${local.tmpldir}/cetus2/toolhead_cetus2.cfg")
         },
         {
           # Mailbox toolhead w/Revo Voron
           key       = "toolhead/mailbox"
           condition = "eq (keyOrDefault \"apps/3d_printers/cetus2_settings/toolhead\" \"mailbox\") \"mailbox\""
-          content   = templatefile("${local.tmpldir}/cetus2/toolhead_mailbox.cfg", {
-          })
+          content   = join("\n", [
+            # Main toolhead config
+            templatefile("${local.tmpldir}/cetus2/toolhead_mailbox.cfg", {
+              orbitool_mcu_name = "orbitool"
+              eddy_mcu_name = "eddy"
+            }),
+            # Orbitool O2 board via USB
+            templatefile("${local.tmpldir}/pins/orbitool_o2.cfg", {
+              mcu_name = "orbitool"
+              mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32f042x6_23002E000C43304E42323620-if00"
+            }),
+            # BTT Eddy USB probe
+            templatefile("${local.tmpldir}/pins/btt_eddy_usb.cfg", {
+              mcu_name = "eddy"
+              mcu_serial = "/dev/serial/by-id/usb-Klipper_rp2040_45474E621B03E41A-if00"
+            }),
+          ])
         }
       ]
     }
