@@ -27,19 +27,19 @@ target "klipper" {
   ]
 }
 
-target "klipper-hostmcu" {
+target "klipper-flash" {
   context = "./klipper"
   platforms = ["linux/arm64"]
-  target = "hostmcu"
+  target = "build-hostmcu"
 
   output = [
-    "type=image,push=true,name=${registry}/cellivar/klipper-hostmcu:latest",
-    "type=image,push=true,name=${registry}/cellivar/klipper-hostmcu:${klipper_tag}"
+    "type=image,push=true,name=${registry}/cellivar/klipper-flash:latest",
+    "type=image,push=true,name=${registry}/cellivar/klipper-flash:${klipper_tag}"
   ]
 }
 
 group "printer" {
-  targets = ["moonraker", "klipper", "klipper-hostmcu"]
+  targets = ["moonraker", "klipper", "klipper-flash"]
 }
 
 ## A container for touchscreen-based single-webpage kiosks.
@@ -57,7 +57,6 @@ target "xkiosk" {
     "type=image,push=true,name=${registry}/cellivar/xkiosk:${xkiosk_tag}"
   ]
 }
-
 
 group "display" {
   targets = ["xkiosk"]

@@ -53,21 +53,21 @@ RUN apt update && apt install -y \
   avrdude gcc-avr binutils-avr avr-libc \
   stm32flash dfu-util libnewlib-arm-none-eabi \
   gcc-arm-none-eabi binutils-arm-none-eabi libusb-1.0-0 libusb-1.0-0-dev \
-  python3-numpy python3-matplotlib
+  python3-numpy python3-matplotlib usbutils python3-serial
 
 COPY --from=build /opt/klipper ./klipper
 COPY --from=build /opt/venv ./venv
 
-RUN --mount=type=bind,source=config.hostmcu,target=/opt/klipper/.config \
-  cd /opt/klipper && make flash
+#RUN --mount=type=bind,source=config.hostmcu,target=/opt/klipper/.config \
+#  cd /opt/klipper && make flash
 
-## Runtime image for the klipper_mcu binary
-FROM debian:bookworm-slim AS hostmcu
+# ## Runtime image for the klipper_mcu binary
+# FROM debian:bookworm-slim AS hostmcu
 
-RUN apt update && apt install -y gpiod
-COPY --from=build-hostmcu /usr/local/bin/klipper_mcu /usr/local/bin/klipper_mcu
+# RUN apt update && apt install -y gpiod
+# COPY --from=build-hostmcu /usr/local/bin/klipper_mcu /usr/local/bin/klipper_mcu
 
-RUN mkdir -p /opt/printer_data/run
-ENTRYPOINT ["/usr/local/bin/klipper_mcu"]
-CMD ["-I", "/opt/printer_data/run/klipper_host_mcu.tty"]
-###
+# RUN mkdir -p /opt/printer_data/run
+# ENTRYPOINT ["/usr/local/bin/klipper_mcu"]
+# CMD ["-I", "/opt/printer_data/run/klipper_host_mcu.tty"]
+# ###
