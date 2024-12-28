@@ -40,7 +40,7 @@ module "printer_cetus2" {
             # Main toolhead config
             templatefile("${local.tmpldir}/cetus2/toolhead_mailbox.cfg", {
               orbitool_mcu_name = "orbitool"
-              eddy_mcu_name = "eddy"
+              eddy_mcu_name = "btt_eddy"
             }),
             # Orbitool O2 board via USB
             templatefile("${local.tmpldir}/pins/orbitool_o2.cfg", {
@@ -49,7 +49,7 @@ module "printer_cetus2" {
             }),
             # BTT Eddy USB probe
             templatefile("${local.tmpldir}/pins/btt_eddy_usb.cfg", {
-              mcu_name = "eddy"
+              mcu_name = "btt_eddy"
               mcu_serial = "/dev/serial/by-id/usb-Klipper_rp2040_45474E621B03E41A-if00"
             }),
           ])
