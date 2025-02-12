@@ -27,6 +27,11 @@ module "printer_bildhauerkabine" {
       sensor_name      = "bttsfs2"
       related_extruder = "extruder"
     })
+    "pins/fysetc_hotkey.cfg" = templatefile("${local.tmpldir}/pins/fysetc_hotkey.cfg", {
+      mcu_name = "fysetc_hotkey"
+      mcu_serial = "/dev/serial/by-id/usb-Klipper_rp2040_E66058919F8E7E30-if00"
+      button_count = 5
+    })
   })
 
   printer_conditional_configs = [
