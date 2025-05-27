@@ -1,5 +1,4 @@
 job "Printer-${printer_name}" {
-  datacenters = ["squeakhouse"]
   node_pool   = "printers"
 
   # Ensure this ends up on the printer node.
@@ -154,13 +153,9 @@ job "Printer-${printer_name}" {
         address  = "$${attr.unique.network.ip-address}"
         tags = [
           "apps",
-          "urlprefix-${printer_name}-moonraker.squeak.house:80/ redirect=301,https://${printer_name}-moonraker.squeak.house$path",
-          "urlprefix-${printer_name}-moonraker.squeak.house/",
-          "hostname"
+          "caddy",
+          "caddy:name=${printer_name}-moonraker",
         ]
-        meta {
-          hostname = "${printer_name}-moonraker.squeak.house"
-        }
         check {
           name     = "alive"
           type     = "http"

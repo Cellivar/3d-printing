@@ -1,6 +1,4 @@
 job "padd-screen" {
-  datacenters = ["squeakhouse"]
-
   # Ensure this gets priorty to run on the right device
   priority = 75
 

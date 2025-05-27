@@ -1,6 +1,4 @@
 job "3DPrinter-Services" {
-  datacenters = ["squeakhouse"]
-
   group "control-plane" {
     count = 1
 
@@ -32,9 +30,7 @@ job "3DPrinter-Services" {
         port = "fluidd"
         tags = [
           "apps",
-          "urlprefix-fluidd.squeak.house:80/ redirect=301,https://fluidd.squeak.house$path",
-          "urlprefix-fluidd.squeak.house/",
-          "hostname--fluidd.squeak.house"
+          "caddy",
         ]
         check {
           name     = "alive"
@@ -116,7 +112,7 @@ job "3DPrinter-Services" {
 
           DATABASE_ADAPTER=postgresql
 
-          DATABASE_HOST="postgres.squeak.house"
+          DATABASE_HOST="postgres.service.consul"
           DATABASE_USER="{{ .Data.data.POSTGRES_USER }}"
           DATABASE_PASSWORD="{{ .Data.data.POSTGRES_PASSWORD }}"
           DATABASE_NAME="${manyfold_database}"
@@ -134,9 +130,7 @@ job "3DPrinter-Services" {
         port = "manyfold"
         tags = [
           "apps",
-          "urlprefix-manyfold.squeak.house:80/ redirect=301,https://manyfold.squeak.house$path",
-          "urlprefix-manyfold.squeak.house/",
-          "hostname--manyfold.squeak.house"
+          "caddy",
         ]
         check {
           name     = "alive"
@@ -204,9 +198,7 @@ job "3DPrinter-Services" {
         port = "spoolman"
         tags = [
           "apps",
-          "urlprefix-spoolman.squeak.house:80/ redirect=301,https://spoolman.squeak.house$path",
-          "urlprefix-spoolman.squeak.house/",
-          "hostname--spoolman.squeak.house"
+          "caddy",
         ]
         check {
           name     = "alive"
@@ -232,7 +224,7 @@ job "3DPrinter-Services" {
           # Default if not set: sqlite
           SPOOLMAN_DB_TYPE=postgres
 
-          SPOOLMAN_DB_HOST=postgres.squeak.house
+          SPOOLMAN_DB_HOST=postgres.service.consul
           SPOOLMAN_DB_PORT=5432
           SPOOLMAN_DB_NAME="${spoolman_database}"
           SPOOLMAN_DB_USERNAME="{{ .Data.data.DB_USERNAME }}"
@@ -298,7 +290,7 @@ job "3DPrinter-Services" {
     }
   }
 
-  group "firefox_fluidd" {
+  group "fluidd-vnc" {
     count = 1
 
     restart {
@@ -351,9 +343,7 @@ job "3DPrinter-Services" {
         port = "vnc"
         tags = [
           "apps",
-          "urlprefix-firefox_fluidd.squeak.house:80/ redirect=301,https://firefox_fluidd.squeak.house$path",
-          "urlprefix-firefox_fluidd.squeak.house/",
-          "hostname--firefox_fluidd.squeak.house"
+          "caddy",
         ]
       }
 
@@ -362,9 +352,7 @@ job "3DPrinter-Services" {
         port = "webvnc"
         tags = [
           "apps",
-          "urlprefix-firefox_fluidd_web.squeak.house:80/ redirect=301,https://firefox_fluidd_web.squeak.house$path",
-          "urlprefix-firefox_fluidd_web.squeak.house/",
-          "hostname--firefox_fluidd_web.squeak.house"
+          "caddy",
         ]
         check {
           name     = "alive"
