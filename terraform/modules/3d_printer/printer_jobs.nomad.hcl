@@ -148,7 +148,7 @@ job "Printer-${printer_name}" {
       }
 
       service {
-        name = "$${TASKGROUP}-$${TASK}"
+        name = "$${NOMAD_JOB_NAME}-$${NOMAD_TASK_NAME}"
         port = "moonraker"
         address  = "$${attr.unique.network.ip-address}"
         tags = [
