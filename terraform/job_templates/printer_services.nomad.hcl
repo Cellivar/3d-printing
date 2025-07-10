@@ -91,7 +91,7 @@ job "3DPrinter-Services" {
       }
 
       vault {
-        role = "nomad-workloads"
+        role = "3dprinter-services-manyfold_owner-db"
       }
 
       volume_mount {
@@ -110,18 +110,21 @@ job "3DPrinter-Services" {
           PUID=1000
           PGID=1000
 
+          # {{ end }}
+
           DATABASE_ADAPTER=postgresql
 
-          DATABASE_HOST="postgres.service.consul"
-          DATABASE_USER="{{ .Data.data.POSTGRES_USER }}"
-          DATABASE_PASSWORD="{{ .Data.data.POSTGRES_PASSWORD }}"
+          # {{ with secret "database/creds/manyfold_owner" }}
+          DATABASE_HOST="postgres-mesh.service.consul"
+          DATABASE_USER="{{ .Data.username }}"
+          DATABASE_PASSWORD="{{ .Data.password }}"
+          # {{ end }}
           DATABASE_NAME="${manyfold_database}"
           DATABASE_CONNECTION_POOL=100
 
           REDIS_URL="redis://{{ env "NOMAD_ADDR_redis" }}/1"
 
           PUBLIC_HOSTNAME="manyfold.squeak.house"
-          # {{ end }}
           EOH
       }
 
@@ -190,7 +193,7 @@ job "3DPrinter-Services" {
       }
 
       vault {
-        role = "nomad-workloads"
+        role = "3dprinter-services-spoolman_owner-db"
       }
 
       service {
@@ -215,7 +218,6 @@ job "3DPrinter-Services" {
         env         = true
         data        = <<-EOH
           # App config
-          # {{ with secret "secret/default/3DPrinter-Services/spoolman" }}
           # Host and port to listen on
           SPOOLMAN_HOST=0.0.0.0
           SPOOLMAN_PORT=7912
@@ -224,14 +226,18 @@ job "3DPrinter-Services" {
           # Default if not set: sqlite
           SPOOLMAN_DB_TYPE=postgres
 
-          SPOOLMAN_DB_HOST=postgres.service.consul
+          SPOOLMAN_DB_HOST=postgres-mesh.service.consul
           SPOOLMAN_DB_PORT=5432
           SPOOLMAN_DB_NAME="${spoolman_database}"
-          SPOOLMAN_DB_USERNAME="{{ .Data.data.DB_USERNAME }}"
-          SPOOLMAN_DB_PASSWORD="{{ .Data.data.DB_PASSWORD }}"
+          # {{ with secret "database/creds/spoolman_owner" }}
+          SPOOLMAN_DB_USERNAME="{{ .Data.username }}"
+          SPOOLMAN_DB_PASSWORD="{{ .Data.password }}"
+          # {{ end }}
 
           # Query parameters for the database connection, e.g. set to `unix_socket=/path/to/mysql.sock` to connect using a MySQL socket.
           #SPOOLMAN_DB_QUERY=
+
+          # {{ with secret "secret/default/3DPrinter-Services/spoolman" }}
 
           # Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
           # Logs will only be reported if the level is higher than the level set here
