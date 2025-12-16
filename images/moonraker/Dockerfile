@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 ## Get Code and Build venv
-FROM python:3.12-bookworm AS build
+FROM docker.io/library/python:3.12-trixie AS build
 WORKDIR /opt
 
 ARG VERSION=master
@@ -13,14 +13,14 @@ RUN --mount=type=bind,source=requirements-prind.txt,target=requirements-prind.tx
   && venv/bin/pip install --no-cache-dir -r moonraker/scripts/moonraker-speedups.txt
 
 ## Runtime Image
-FROM python:3.12-slim-bookworm AS run
+FROM docker.io/library/python:3.12-slim-trixie AS run
 
 RUN apt update && apt install -y \
   libopenjp2-7 \
   python3-libgpiod \
   curl \
-  libcurl4 \
-  libssl3 \
+  libcurl4t64 \
+  libssl3t64 \
   liblmdb0 \
   libsodium23 \
   libjpeg62-turbo \
@@ -29,7 +29,10 @@ RUN apt update && apt install -y \
   zlib1g \
   iproute2 \
   systemd \
-  sudo
+  sudo \
+  git \
+  jq \
+  && apt clean
 
 RUN groupadd moonraker --gid 1000 \
   && useradd moonraker --uid 1000 --gid moonraker \

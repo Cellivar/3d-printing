@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1
-## Get Klipper Source and Build venv
-FROM python:3.11-bookworm AS build
+## Get Kalico Source and Build venv
+FROM docker.io/library/python:3.12-trixie AS build
 WORKDIR /opt
 
-RUN apt update && apt install -y cmake
+RUN apt update && apt install -y cmake && apt clean
 
-ARG VERSION=master
-ADD https://github.com/Klipper3d/klipper.git#${VERSION} klipper/
+ARG VERSION=main
+ADD https://github.com/KalicoCrew/kalico.git#${VERSION} klipper/
 
 RUN --mount=type=bind,source=requirements-prind.txt,target=requirements-prind.txt \
   python -m venv venv \
@@ -16,7 +16,7 @@ RUN --mount=type=bind,source=requirements-prind.txt,target=requirements-prind.tx
   && venv/bin/python klipper/klippy/chelper/__init__.py
 
 ## Klippy Runtime Image
-FROM python:3.11-slim-bookworm AS run
+FROM docker.io/library/python:3.12-slim-trixie AS run
 
 RUN groupadd klipper --gid 1000 \
   && useradd klipper --uid 1000 --gid klipper \
@@ -35,6 +35,14 @@ ADD --chown=klipper:klipper https://github.com/nevermore3d/Nevermore_Max/raw/mas
 ADD --chown=klipper:klipper https://github.com/nevermore3d/Nevermore_Max/raw/master/Software/Klipper/voc_algorithm.py ./klipper/klippy/extras
 # Auto nozzle z calibrate - https://github.com/protoloft/klipper_z_calibration
 ADD --chown=klipper:klipper https://github.com/protoloft/klipper_z_calibration/raw/master/z_calibration.py ./klipper/klippy/extras
+# RGB barf - https://github.com/julianschill/klipper-led_effect
+ADD --chown=klipper:klipper https://github.com/julianschill/klipper-led_effect/raw/master/src/led_effect.py ./klipper/klippy/extras
+
+# AFC Klipper Addon - https://github.com/ArmoredTurtle/AFC-Klipper-Add-On/tree/main
+# These steps are derived from their interactive installer. This will only set up
+# the kipper extra files, not the macros which I store elsewhere.
+ADD --chown=klipper:klipper https://github.com/ArmoredTurtle/AFC-Klipper-Add-On /home/klipper/AFC-Klipper-Add-On
+RUN cp /home/klipper/AFC-Klipper-Add-On/extras/*.py /home/klipper/klippy/extras/
 
 USER klipper
 ENTRYPOINT [ "/home/klipper/entrypoint.sh" ]
@@ -42,7 +50,7 @@ CMD ["-I", "printer_data/run/klipper.tty", "-a", "printer_data/run/klipper.sock"
 ###
 
 ## Image for building MCU code including other tooling
-FROM debian:bookworm AS build-hostmcu
+FROM docker.io/library/debian:trixie AS build-hostmcu
 WORKDIR /opt
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -53,7 +61,8 @@ RUN apt update && apt install -y \
   avrdude gcc-avr binutils-avr avr-libc \
   stm32flash dfu-util libnewlib-arm-none-eabi \
   gcc-arm-none-eabi binutils-arm-none-eabi libusb-1.0-0 libusb-1.0-0-dev \
-  python3-numpy python3-matplotlib usbutils python3-serial
+  python3-numpy python3-matplotlib usbutils python3-serial \
+  && apt clean
 
 COPY --from=build /opt/klipper ./klipper
 COPY --from=build /opt/venv ./venv

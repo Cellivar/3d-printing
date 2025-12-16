@@ -1,5 +1,5 @@
 variable "registry" {
-  default = "docker.squeak.house"
+  default = "zotoci.squeak.house"
 }
 
 variable "moonraker_tag" {}
@@ -17,7 +17,7 @@ target "moonraker" {
 }
 
 target "klipper" {
-  context = "./klipper"
+  context = "./kalico"
   platforms = ["linux/arm64"]
   target = "run"
 
@@ -28,7 +28,7 @@ target "klipper" {
 }
 
 target "klipper-flash" {
-  context = "./klipper"
+  context = "./kalico"
   platforms = ["linux/arm64"]
   target = "build-hostmcu"
 

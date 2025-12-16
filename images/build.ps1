@@ -3,14 +3,14 @@ $headers = @{
     Accept = "application/vnd.github.VERSION.sha"
 }
 
-# Klipper tags once in a blue moon, just use latest and pray.
+# my kingdom for open source repos that use semver tags
 if ([string]::IsNullOrWhiteSpace($env:klipper_tag)) {
-    $env:klipper_tag   = Invoke-RestMethod -Headers $headers "https://api.github.com/repos/Klipper3d/klipper/commits/master"
+    $env:klipper_tag   = Invoke-RestMethod -Headers $headers "https://api.github.com/repos/KalicoCrew/kalico/commits/main"
 }
 
-# Moonraker tags more proactively, can use static tags here or uncomment the continuous tag check.
-$env:moonraker_tag = "v0.9.3"
-# $env:moonraker_tag = Invoke-RestMethod -Headers $headers "https://api.github.com/repos/Arksine/moonraker/commits/master"
+if ([string]::IsNullOrWhiteSpace($env:moonraker_tag)) {
+    $env:moonraker_tag   = Invoke-RestMethod -Headers $headers "https://api.github.com/repos/Arksine/moonraker/commits/master"
+}
 
 docker buildx bake printer
 
