@@ -56,7 +56,7 @@ job "Printer-${printer_name}" {
 
       driver = "docker"
       config {
-        image = "zotoci.squeak.house/docker.io/hashicorp/consul-template"
+        image = "zotoci.squeak.house/docker.io/hashicorp/consul-template:0.41.3"
         # For local consul agent access
         network_mode = "host"
         args = ["-config", "/etc/consul-template.d/consul-template.hcl"]
