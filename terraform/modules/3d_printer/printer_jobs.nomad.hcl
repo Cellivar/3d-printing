@@ -56,7 +56,7 @@ job "Printer-${printer_name}" {
 
       driver = "docker"
       config {
-        image = "docker.io/hashicorp/consul-template"
+        image = "zotoci.squeak.house/docker.io/hashicorp/consul-template"
         # For local consul agent access
         network_mode = "host"
         args = ["-config", "/etc/consul-template.d/consul-template.hcl"]
@@ -80,7 +80,7 @@ job "Printer-${printer_name}" {
     task "klipper" {
       driver = "docker"
       config {
-        image = "docker.squeak.house/cellivar/klipper:${klipper_img_version}"
+        image = "zotoci.squeak.house/cellivar/klipper:${klipper_img_version}"
         # Klipper neds to talk to various devices directly
         volumes = [
           "/dev:/dev"
@@ -105,7 +105,7 @@ job "Printer-${printer_name}" {
     task "moonraker" {
       driver = "docker"
       config {
-        image = "docker.squeak.house/cellivar/moonraker:${moonraker_img_version}"
+        image = "zotoci.squeak.house/cellivar/moonraker:${moonraker_img_version}"
         ports = ["moonraker"]
 
         # Enable GPIO control

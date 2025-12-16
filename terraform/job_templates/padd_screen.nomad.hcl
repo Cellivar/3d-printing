@@ -33,7 +33,7 @@ job "padd-screen" {
     task "xkiosk" {
       driver = "docker"
       config {
-        image = "docker.squeak.house/cellivar/xkiosk:latest"
+        image = "zotoci.squeak.house/cellivar/xkiosk:latest"
         command = "xeyes"
         cap_add = [ "SYS_TTY_CONFIG" ]
         volumes = [

@@ -16,7 +16,7 @@ job "3DPrinter-Services" {
     task "fluidd" {
       driver = "docker"
       config {
-        image = "ghcr.io/fluidd-core/fluidd:${fluidd_img_version}"
+        image = "zotoci.squeak.house/ghcr.io/fluidd-core/fluidd:${fluidd_img_version}"
         ports = ["fluidd"]
       }
 
@@ -73,7 +73,7 @@ job "3DPrinter-Services" {
     task "manyfold" {
       driver = "docker"
       config {
-        image = "ghcr.io/manyfold3d/manyfold:${manyfold_img_version}"
+        image = "zotoci.squeak.house/ghcr.io/manyfold3d/manyfold:${manyfold_img_version}"
         ports = ["manyfold"]
       }
 
@@ -148,7 +148,7 @@ job "3DPrinter-Services" {
     task "manyfold-redis" {
       driver = "docker"
       config {
-        image = "redis:7"
+        image = "zotoci.squeak.house/docker.io/library/redis:7"
         ports = ["redis"]
       }
 
@@ -176,7 +176,7 @@ job "3DPrinter-Services" {
     task "spoolman" {
       driver = "docker"
       config {
-        image = "ghcr.io/donkie/spoolman:${spoolman_img_version}"
+        image = "zotoci.squeak.house/ghcr.io/donkie/spoolman:${spoolman_img_version}"
         ports = ["spoolman"]
       }
 
@@ -319,7 +319,7 @@ job "3DPrinter-Services" {
     task "chromium" {
       driver = "docker"
       config {
-        image = "accetto/ubuntu-vnc-xfce-firefox-g3:20.04"
+        image = "zotoci.squeak.house/docker.io/accetto/ubuntu-vnc-xfce-firefox-g3:20.04"
         ports = ["vnc", "webvnc"]
         volumes = [
           "local/chromium-browser.init:/home/headless/.chromium-browser.init"
