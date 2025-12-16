@@ -1,3 +1,40 @@
+locals {
+  printer_afc_config = templatefile("${local.tmpldir}/bildhauerkabine/afc.cfg", {
+    afc_mcu_name = "Turtle_1"
+  })
+  printer_afc_board = templatefile("${local.tmpldir}/pins/afc_lite.cfg", {
+    mcu_name   = "Turtle_1"
+    mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32h723xx_2D0026000A51333033333834-if00"
+
+    afc_bowden_length = 1725
+
+    rgb_led2_enabled = true
+    rgb_led2_count   = 64
+    rgb_led3_enabled = false
+    rgb_led3_count = 0
+    rgb_led4_enabled = false
+    rgb_led4_count = 0
+
+    lanes = [
+      {
+        id       = 1
+        dist_hub = 155
+      },
+      {
+        id       = 2
+        dist_hub = 80
+      },
+      {
+        id       = 3
+        dist_hub = 90
+      },
+      {
+        id       = 4
+        dist_hub = 145
+      }
+    ]
+  })
+}
 
 module "printer_bildhauerkabine" {
   source = "./modules/3d_printer"
@@ -17,6 +54,14 @@ module "printer_bildhauerkabine" {
     "macros/probe_dock.cfg"     = file("${local.tmpldir}/common/probe_dock.cfg")
     "pins/octopus_1_1_pins.cfg" = file("${local.tmpldir}/pins/octopus_1_1_pins.cfg")
     "pins/mini12864.cfg"        = file("${local.tmpldir}/pins/mini12864.cfg")
+
+    # AFC macros
+    "macros/afc_macros.cfg" = file("${local.tmpldir}/common/afc/afc_macros.cfg")
+    "macros/afc_brush.cfg"  = file("${local.tmpldir}/common/afc/brush.cfg")
+    "macros/afc_cut.cfg"    = file("${local.tmpldir}/common/afc/cut.cfg")
+    "macros/afc_kick.cfg"   = file("${local.tmpldir}/common/afc/kick.cfg")
+    "macros/afc_park.cfg"   = file("${local.tmpldir}/common/afc/park.cfg")
+    "macros/afc_poop.cfg"   = file("${local.tmpldir}/common/afc/poop.cfg")
 
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "!gpio18"
@@ -92,6 +137,26 @@ module "printer_bildhauerkabine" {
             i2c_mcu     = "ebb36"
             i2c_bus     = "i2c3_PB3_PB4"
           })
+        }
+      ]
+    },
+    {
+      out_file = "pins/afc.cfg"
+      options = [
+        {
+          key       = "pins/afc_cfg"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/external/afc1\" \"true\") \"true\""
+          content   = local.printer_afc_board
+        }
+      ]
+    },
+    {
+      out_file = "afc.cfg"
+      options = [
+        {
+          key       = "afc/afc_cfg"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/external/afc1\" \"true\") \"true\""
+          content   = local.printer_afc_config
         }
       ]
     }
