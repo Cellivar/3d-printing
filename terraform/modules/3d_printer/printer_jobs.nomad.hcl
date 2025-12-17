@@ -55,6 +55,7 @@ job "Printer-${printer_name}" {
       }
 
       driver = "docker"
+      user = "1000:1000"
       config {
         image = "zotoci.squeak.house/docker.io/hashicorp/consul-template:0.41.3"
         # For local consul agent access

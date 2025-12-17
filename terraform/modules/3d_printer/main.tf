@@ -49,6 +49,7 @@ locals {
       # Drop files into the config directory, setting permissions correctly.
       destination = "${local.consul_template_printer_data_mount}/config/${key}"
       perms       = "0666"
+      uid         = 1000
       gid         = 1000
 
       # Jinja syntax collides, override to something silly instead
@@ -74,6 +75,7 @@ locals {
       # Drop files into the config directory, setting permissions correctly.
       destination = "${local.consul_template_printer_data_mount}/config/${conf.out_file}"
       perms       = "0666"
+      uid         = 1000
       gid         = 1000
 
       # Jinja syntax collides, override to something silly instead
