@@ -141,7 +141,18 @@ module "printer_bildhauerkabine" {
       ]
     },
     {
-      out_file = "pins/afc.cfg"
+      # The main AFC config must load before the board, order matters for these.
+      out_file = "afc/a_afc.cfg"
+      options = [
+        {
+          key       = "afc/afc_cfg"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/external/afc1\" \"true\") \"true\""
+          content   = local.printer_afc_config
+        }
+      ]
+    },
+    {
+      out_file = "afc/b_afc_board.cfg"
       options = [
         {
           key       = "pins/afc_cfg"
@@ -150,15 +161,5 @@ module "printer_bildhauerkabine" {
         }
       ]
     },
-    {
-      out_file = "afc.cfg"
-      options = [
-        {
-          key       = "afc/afc_cfg"
-          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/external/afc1\" \"true\") \"true\""
-          content   = local.printer_afc_config
-        }
-      ]
-    }
   ]
 }
