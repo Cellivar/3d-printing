@@ -41,8 +41,8 @@ ADD --chown=klipper:klipper https://github.com/julianschill/klipper-led_effect/r
 # AFC Klipper Addon - https://github.com/ArmoredTurtle/AFC-Klipper-Add-On/tree/main
 # These steps are derived from their interactive installer. This will only set up
 # the klipper extra files, not the macros which I store elsewhere.
-ADD --chown=klipper:klipper https://github.com/ArmoredTurtle/AFC-Klipper-Add-On.git /home/klipper/AFC-Klipper-Add-On
-RUN cp /home/klipper/AFC-Klipper-Add-On/extras/*.py ./klipper/klippy/extras/
+ADD --chown=klipper:klipper https://github.com/Cellivar/AFC-Klipper-Add-On.git#cellivar /home/klipper/AFC-Klipper-Add-On
+RUN cp /home/klipper/AFC-Klipper-Add-On/extras/*.py ./klipper/klippy/extras/ && chown klipper:klipper ./klipper/klippy/extras/*.py
 
 USER klipper
 ENTRYPOINT [ "/home/klipper/entrypoint.sh" ]
