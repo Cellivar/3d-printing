@@ -31,10 +31,12 @@ COPY --chown=klipper:klipper --from=build /opt/venv ./venv
 
 # Kippy Extras that add features
 # Nevermore sensors for SGP40 - https://github.com/nevermore3d/Nevermore_Max/tree/master/Software/Klipper
-ADD --chown=klipper:klipper https://github.com/nevermore3d/Nevermore_Max/raw/master/Software/Klipper/sgp40.py ./klipper/klippy/extras
-ADD --chown=klipper:klipper https://github.com/nevermore3d/Nevermore_Max/raw/master/Software/Klipper/voc_algorithm.py ./klipper/klippy/extras
+# This is now unsupported, the solution moved towards a separate board: https://github.com/SanaaHamel/nevermore-controller
+# ADD --chown=klipper:klipper https://github.com/nevermore3d/Nevermore_Max/raw/master/Software/Klipper/sgp40.py ./klipper/klippy/extras
+# ADD --chown=klipper:klipper https://github.com/nevermore3d/Nevermore_Max/raw/master/Software/Klipper/voc_algorithm.py ./klipper/klippy/extras
 # Auto nozzle z calibrate - https://github.com/protoloft/klipper_z_calibration
-ADD --chown=klipper:klipper https://github.com/protoloft/klipper_z_calibration/raw/master/z_calibration.py ./klipper/klippy/extras
+# Not needed with Kalico as it has built-in z calibration
+# ADD --chown=klipper:klipper https://github.com/protoloft/klipper_z_calibration/raw/master/z_calibration.py ./klipper/klippy/extras
 # RGB barf - https://github.com/julianschill/klipper-led_effect
 ADD --chown=klipper:klipper https://github.com/julianschill/klipper-led_effect/raw/master/src/led_effect.py ./klipper/klippy/extras
 
