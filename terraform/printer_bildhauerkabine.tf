@@ -11,9 +11,9 @@ locals {
     rgb_led2_enabled = true
     rgb_led2_count   = 64
     rgb_led3_enabled = false
-    rgb_led3_count = 0
+    rgb_led3_count   = 0
     rgb_led4_enabled = false
-    rgb_led4_count = 0
+    rgb_led4_count   = 0
 
     lanes = [
       {
@@ -49,11 +49,29 @@ module "printer_bildhauerkabine" {
 
   # Config files specific to this printer, merged with the common list.
   printer_configs = merge(local.common_configs, {
-    "main_printer.cfg"          = file("${local.tmpldir}/bildhauerkabine/main_printer.cfg")
-    "macros/macros.cfg"         = file("${local.tmpldir}/bildhauerkabine/macros.cfg")
-    "macros/probe_dock.cfg"     = file("${local.tmpldir}/common/probe_dock.cfg")
+    "main_printer.cfg"  = file("${local.tmpldir}/bildhauerkabine/main_printer.cfg")
+    "macros/macros.cfg" = file("${local.tmpldir}/bildhauerkabine/macros.cfg")
     "pins/octopus_1_1_pins.cfg" = file("${local.tmpldir}/pins/octopus_1_1_pins.cfg")
     "pins/mini12864.cfg"        = file("${local.tmpldir}/pins/mini12864.cfg")
+
+    # The probe is on a servo arm to attach and detach it from the toolhead.
+    "common/servo_arm.cfg" = templatefile("${local.tmpldir}/common/probe_dock.cfg", {
+      servo_name         = "probe_dock"
+      servo_pin          = "RASPI_RX2"
+      extended_angle     = 0
+      retracted_angle    = 256
+      servo_move_time_ms = 750
+    })
+
+    # The printer has a mounted brush and filament cutter arm. Two servos use the
+    # same output pins for both, with a 1/4 turn to extend and retract both.
+    "common/servo_arm.cfg" = templatefile("${local.tmpldir}/common/servo_arm.cfg", {
+      servo_name         = "brush_arm"
+      servo_pin          = "RASPI_TX2"
+      extended_angle     = 0
+      retracted_angle    = 256
+      servo_move_time_ms = 750
+    })
 
     # AFC macros
     "macros/afc_macros.cfg" = file("${local.tmpldir}/common/afc/afc_macros.cfg")
@@ -65,12 +83,6 @@ module "printer_bildhauerkabine" {
 
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "!gpio18"
-    })
-    "common/bttsfs2.cfg" = templatefile("${local.tmpldir}/common/bttsfs2.cfg", {
-      motion_pin       = "SENSOR6"
-      switch_pin       = "SENSOR5"
-      sensor_name      = "bttsfs2"
-      related_extruder = "extruder"
     })
     "pins/fysetc_hotkey.cfg" = templatefile("${local.tmpldir}/pins/fysetc_hotkey.cfg", {
       mcu_name     = "fysetc_hotkey"
@@ -148,6 +160,11 @@ module "printer_bildhauerkabine" {
           key       = "afc/afc_cfg"
           condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/external/afc1\" \"true\") \"true\""
           content   = local.printer_afc_config
+        },
+        {
+          key       = "afc/manual"
+          condition = "eq (keyOrDefault \"apps/3d_printers/bildhauerkabine_settings/external/afc1\" \"true\") \"false\""
+          content   = file("${local.tmpldir}/common/filament_manual.cfg")
         }
       ]
     },
