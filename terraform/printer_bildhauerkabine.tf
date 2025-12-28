@@ -6,7 +6,7 @@ locals {
     mcu_name   = "Turtle_1"
     mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32h723xx_2D0026000A51333033333834-if00"
 
-    afc_bowden_length = 1725
+    afc_bowden_length = 1005.0
 
     rgb_led2_enabled = true
     rgb_led2_count   = 64
@@ -18,19 +18,19 @@ locals {
     lanes = [
       {
         id       = 1
-        dist_hub = 155
+        dist_hub = 170.0
       },
       {
         id       = 2
-        dist_hub = 80
+        dist_hub = 115.0
       },
       {
         id       = 3
-        dist_hub = 90
+        dist_hub = 115.0
       },
       {
         id       = 4
-        dist_hub = 145
+        dist_hub = 170.0
       }
     ]
   })
