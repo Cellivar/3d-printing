@@ -55,7 +55,7 @@ module "printer_bildhauerkabine" {
     "pins/mini12864.cfg"        = file("${local.tmpldir}/pins/mini12864.cfg")
 
     # The probe is on a servo arm to attach and detach it from the toolhead.
-    "common/servo_arm.cfg" = templatefile("${local.tmpldir}/common/probe_dock.cfg", {
+    "common/servo_arm.cfg" = templatefile("${local.tmpldir}/common/servo_arm.cfg", {
       servo_name         = "probe_dock"
       servo_pin          = "RASPI_RX2"
       extended_angle     = 0
@@ -65,7 +65,7 @@ module "printer_bildhauerkabine" {
 
     # The printer has a mounted brush and filament cutter arm. Two servos use the
     # same output pins for both, with a 1/4 turn to extend and retract both.
-    "common/servo_arm.cfg" = templatefile("${local.tmpldir}/common/servo_arm.cfg", {
+    "common/brush_arm.cfg" = templatefile("${local.tmpldir}/common/servo_arm.cfg", {
       servo_name         = "brush_arm"
       servo_pin          = "RASPI_TX2"
       extended_angle     = 0
