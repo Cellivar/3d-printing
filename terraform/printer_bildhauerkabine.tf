@@ -6,7 +6,7 @@ locals {
     mcu_name   = "Turtle_1"
     mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32h723xx_2D0026000A51333033333834-if00"
 
-    afc_bowden_length = 1005.0
+    afc_bowden_length = 705.0
 
     rgb_led2_enabled = true
     rgb_led2_count   = 64
@@ -49,8 +49,8 @@ module "printer_bildhauerkabine" {
 
   # Config files specific to this printer, merged with the common list.
   printer_configs = merge(local.common_configs, {
-    "main_printer.cfg"  = file("${local.tmpldir}/bildhauerkabine/main_printer.cfg")
-    "macros/macros.cfg" = file("${local.tmpldir}/bildhauerkabine/macros.cfg")
+    "main_printer.cfg"          = file("${local.tmpldir}/bildhauerkabine/main_printer.cfg")
+    "macros/macros.cfg"         = file("${local.tmpldir}/bildhauerkabine/macros.cfg")
     "pins/octopus_1_1_pins.cfg" = file("${local.tmpldir}/pins/octopus_1_1_pins.cfg")
     "pins/mini12864.cfg"        = file("${local.tmpldir}/pins/mini12864.cfg")
 
