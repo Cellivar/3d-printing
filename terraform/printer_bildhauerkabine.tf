@@ -6,7 +6,7 @@ locals {
     mcu_name   = "Turtle_1"
     mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32h723xx_2D0026000A51333033333834-if00"
 
-    afc_bowden_length = 705.0
+    afc_bowden_length = 855.0
 
     rgb_led2_enabled = true
     rgb_led2_count   = 64
