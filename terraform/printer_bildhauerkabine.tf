@@ -61,6 +61,7 @@ module "printer_bildhauerkabine" {
       extended_angle     = 0
       retracted_angle    = 256
       servo_move_time_ms = 750
+      z_clearance_min    = 15
     })
 
     # The printer has a mounted brush and filament cutter arm. Two servos use the
@@ -71,6 +72,7 @@ module "printer_bildhauerkabine" {
       extended_angle     = 0
       retracted_angle    = 256
       servo_move_time_ms = 750
+      z_clearance_min    = 50
     })
 
     # AFC macros
