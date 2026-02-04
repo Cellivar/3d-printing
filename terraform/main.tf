@@ -11,8 +11,8 @@ locals {
   jobdir  = "${path.module}/job_templates"
 
   fluidd_img_version   = "v1.36.0"
-  spoolman_img_version = "0.22"
-  manyfold_img_version = "0.130.2"
+  spoolman_img_version = "0.23"
+  manyfold_img_version = "0.132.0"
 
   # Config files expected to be on every printer.
   common_configs = {
