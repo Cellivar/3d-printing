@@ -1,19 +1,19 @@
 
-module "printer_cetus2" {
+module "printer_otrmo" {
   source = "./modules/3d_printer"
 
   ceph_user_id    = data.vault_kv_secret_v2.ceph.data.user_id
   ceph_user_key   = data.vault_kv_secret_v2.ceph.data.user_key
   ceph_cluster_id = data.vault_kv_secret_v2.ceph.data.cluster_id
 
-  printer_name          = "cetus2"
+  printer_name          = "otrmo"
   klipper_img_version   = var.klipper_img_version
   moonraker_img_version = var.moonraker_img_version
 
   # Config files specific to this printer, merged with the common list.
   printer_configs = merge(local.common_configs, {
-    "main_printer.cfg"           = file("${local.tmpldir}/cetus2/main_printer.cfg")
-    "macros/macros.cfg"          = file("${local.tmpldir}/cetus2/macros.cfg")
+    "main_printer.cfg"           = file("${local.tmpldir}/otrmo/main_printer.cfg")
+    "macros/macros.cfg"          = file("${local.tmpldir}/otrmo/macros.cfg")
     "macros/mixing_extruder.cfg" = file("${local.tmpldir}/common/mixing_extruder.cfg")
     "pins/skr_1_4.cfg"           = file("${local.tmpldir}/pins/skr_1_4.cfg")
 
@@ -29,16 +29,16 @@ module "printer_cetus2" {
         {
           # Cetus2 toolhead with LGX Lite v2 extruders
           key       = "toolhead/cetus2"
-          condition = "eq (keyOrDefault \"apps/3d_printers/cetus2_settings/toolhead\" \"mailbox\") \"cetus2\""
-          content   = file("${local.tmpldir}/cetus2/toolhead_cetus2.cfg")
+          condition = "eq (keyOrDefault \"apps/3d_printers/otrmo_settings/toolhead\" \"mailbox\") \"cetus2\""
+          content   = file("${local.tmpldir}/otrmo/toolhead_cetus2.cfg")
         },
         {
           # Mailbox toolhead w/Revo Voron
           key       = "toolhead/mailbox"
-          condition = "eq (keyOrDefault \"apps/3d_printers/cetus2_settings/toolhead\" \"mailbox\") \"mailbox\""
+          condition = "eq (keyOrDefault \"apps/3d_printers/otrmo_settings/toolhead\" \"mailbox\") \"mailbox\""
           content   = join("\n", [
             # Main toolhead config
-            templatefile("${local.tmpldir}/cetus2/toolhead_mailbox.cfg", {
+            templatefile("${local.tmpldir}/otrmo/toolhead_mailbox.cfg", {
               orbitool_mcu_name = "orbitool"
               eddy_mcu_name = "btt_eddy"
             }),
