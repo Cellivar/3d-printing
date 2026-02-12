@@ -1,4 +1,4 @@
-job "Printer-${printer_name}" {
+job "printer-${printer_name}" {
   node_pool   = "printers"
 
   # Ensure this ends up on the printer node.
@@ -13,7 +13,7 @@ job "Printer-${printer_name}" {
     constraint {
       # Only run this job on the printer node.
       attribute = "$${attr.unique.hostname}"
-      value     = "${printer_name}"
+      value     = "${printer_hostname}"
     }
 
     restart {

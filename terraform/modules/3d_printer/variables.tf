@@ -15,6 +15,11 @@ variable "printer_name" {
   description = "The name of the printer"
 }
 
+variable "printer_hostname" {
+  type        = string
+  description = "The hostname of the printer node, used for Nomad scheduling constraints"
+}
+
 variable "printer_configs" {
   type        = map(string)
   description = "The map of config files that apply to this printer"
@@ -23,14 +28,14 @@ variable "printer_configs" {
 variable "printer_conditional_configs" {
   type = list(object({
     out_file = string
-    options  = list(object({
+    options = list(object({
       key       = string
       content   = string
       condition = string
     }))
   }))
   description = "The map of config files that conditionally apply to this printer. Conditions must equal true to be applied."
-  default = []
+  default     = []
 }
 
 ## Ceph storage volume information

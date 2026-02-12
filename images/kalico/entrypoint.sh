@@ -6,7 +6,7 @@ PRINTER_DATA=/home/klipper/printer_data
 mkdir -p $PRINTER_DATA/run \
   $PRINTER_DATA/gcodes \
   $PRINTER_DATA/logs \
-  $PRINTER_DATA/config
+  $PRINTER_DATA/config || (echo "Failed to create printer data directories"; sleep 500; exit 1)
 
 if [[ -z "${SKIP_CREATE_PRINTER_CFG}" ]]; then
   # The printer.cfg file is required to boot, but is overwritten by Klipper too.

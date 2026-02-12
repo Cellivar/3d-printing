@@ -7,6 +7,7 @@ module "printer_otrmo" {
   ceph_cluster_id = data.vault_kv_secret_v2.ceph.data.cluster_id
 
   printer_name          = "otrmo"
+  printer_hostname      = "cetus2"
   klipper_img_version   = var.klipper_img_version
   moonraker_img_version = var.moonraker_img_version
 

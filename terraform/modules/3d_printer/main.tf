@@ -118,6 +118,7 @@ resource "nomad_job" "job" {
     "${path.module}/printer_jobs.nomad.hcl",
     {
       printer_name          = var.printer_name
+      printer_hostname      = var.printer_hostname
       csi_volume_name       = module.ceph_volume.volume_name
 
       klipper_img_version   = var.klipper_img_version
