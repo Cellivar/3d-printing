@@ -41,17 +41,11 @@ module "printer_otrmo" {
             # Main toolhead config
             templatefile("${local.tmpldir}/otrmo/toolhead_mailbox.cfg", {
               orbitool_mcu_name = "orbitool"
-              eddy_mcu_name = "btt_eddy"
             }),
             # Orbitool O2 board via USB
             templatefile("${local.tmpldir}/pins/orbitool_o2.cfg", {
               mcu_name = "orbitool"
               mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32f042x6_23002E000C43304E42323620-if00"
-            }),
-            # BTT Eddy USB probe
-            templatefile("${local.tmpldir}/pins/btt_eddy_usb.cfg", {
-              mcu_name = "btt_eddy"
-              mcu_serial = "/dev/serial/by-id/usb-Klipper_rp2040_45474E621B03E41A-if00"
             }),
           ])
         }
