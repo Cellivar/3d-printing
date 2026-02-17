@@ -34,6 +34,7 @@ COPY --chown=klipper:klipper --from=build /opt/venv ./venv
 # This is now unsupported, the solution moved towards a separate board: https://github.com/SanaaHamel/nevermore-controller
 # ADD --chown=klipper:klipper https://github.com/nevermore3d/Nevermore_Max/raw/master/Software/Klipper/sgp40.py ./klipper/klippy/extras
 # ADD --chown=klipper:klipper https://github.com/nevermore3d/Nevermore_Max/raw/master/Software/Klipper/voc_algorithm.py ./klipper/klippy/extras
+
 # Auto nozzle z calibrate - https://github.com/protoloft/klipper_z_calibration
 # Not needed with Kalico as it has built-in z calibration
 # ADD --chown=klipper:klipper https://github.com/protoloft/klipper_z_calibration/raw/master/z_calibration.py ./klipper/klippy/extras
@@ -52,22 +53,22 @@ CMD ["-I", "printer_data/run/klipper.tty", "-a", "printer_data/run/klipper.sock"
 ###
 
 ## Image for building MCU code including other tooling
-FROM docker.io/library/debian:trixie AS build-hostmcu
-WORKDIR /opt
+# FROM docker.io/library/debian:trixie AS build-hostmcu
+# WORKDIR /opt
 
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt install -y \
-  sudo \
-  virtualenv python3-dev libffi-dev build-essential pkg-config\
-  libncurses-dev \
-  avrdude gcc-avr binutils-avr avr-libc \
-  stm32flash dfu-util libnewlib-arm-none-eabi \
-  gcc-arm-none-eabi binutils-arm-none-eabi libusb-1.0-0 libusb-1.0-0-dev \
-  python3-numpy python3-matplotlib usbutils python3-serial \
-  && apt clean
+# ARG DEBIAN_FRONTEND=noninteractive
+# RUN apt update && apt install -y \
+#   sudo \
+#   virtualenv python3-dev libffi-dev build-essential pkg-config\
+#   libncurses-dev \
+#   avrdude gcc-avr binutils-avr avr-libc \
+#   stm32flash dfu-util libnewlib-arm-none-eabi \
+#   gcc-arm-none-eabi binutils-arm-none-eabi libusb-1.0-0 libusb-1.0-0-dev \
+#   python3-numpy python3-matplotlib usbutils python3-serial \
+#   && apt clean
 
-COPY --from=build /opt/klipper ./klipper
-COPY --from=build /opt/venv ./venv
+# COPY --from=build /opt/klipper ./klipper
+# COPY --from=build /opt/venv ./venv
 
 #RUN --mount=type=bind,source=config.hostmcu,target=/opt/klipper/.config \
 #  cd /opt/klipper && make flash

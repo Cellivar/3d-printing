@@ -39,7 +39,7 @@ target "klipper-flash" {
 }
 
 group "printer" {
-  targets = ["moonraker", "klipper", "klipper-flash"]
+  targets = ["moonraker", "klipper"]
 }
 
 ## A container for touchscreen-based single-webpage kiosks.
