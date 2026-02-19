@@ -38,14 +38,23 @@ COPY --chown=klipper:klipper --from=build /opt/venv ./venv
 # Auto nozzle z calibrate - https://github.com/protoloft/klipper_z_calibration
 # Not needed with Kalico as it has built-in z calibration
 # ADD --chown=klipper:klipper https://github.com/protoloft/klipper_z_calibration/raw/master/z_calibration.py ./klipper/klippy/extras
+
+# Klipper auto speed - https://github.com/ideas32/klipper_auto_speed
+ADD --chown=klipper:klipper https://github.com/cellivar/klipper_auto_speed.git#main /home/klipper/klipper_auto_speed
+RUN mkdir -p ./klipper/klippy/extras/autospeed \
+  && cp /home/klipper/klipper_auto_speed/autospeed/*.py ./klipper/klippy/extras/autospeed/ \
+  && cp /home/klipper/klipper_auto_speed/auto_speed.py ./klipper/klippy/extras/auto_speed.py
+
 # RGB barf - https://github.com/julianschill/klipper-led_effect
 ADD --chown=klipper:klipper https://github.com/julianschill/klipper-led_effect/raw/master/src/led_effect.py ./klipper/klippy/extras
 
-# AFC Klipper Addon - https://github.com/ArmoredTurtle/AFC-Klipper-Add-On/tree/main
+# AFC Klipper Addon - https://github.com/ArmoredTurtle/AFC-Klipper-Add-On
 # These steps are derived from their interactive installer. This will only set up
 # the klipper extra files, not the macros which I store elsewhere.
-ADD --chown=klipper:klipper https://github.com/Cellivar/AFC-Klipper-Add-On.git#cellivar /home/klipper/AFC-Klipper-Add-On
-RUN cp /home/klipper/AFC-Klipper-Add-On/extras/*.py ./klipper/klippy/extras/ && chown klipper:klipper ./klipper/klippy/extras/*.py
+ADD --chown=klipper:klipper https://github.com/ArmoredTurtle/AFC-Klipper-Add-On.git#v1.0.35 /home/klipper/AFC-Klipper-Add-On
+RUN cp /home/klipper/AFC-Klipper-Add-On/extras/*.py ./klipper/klippy/extras/
+
+RUN chown -R klipper:klipper ./klipper/klippy/extras
 
 USER klipper
 ENTRYPOINT [ "/home/klipper/entrypoint.sh" ]
