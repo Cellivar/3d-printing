@@ -3,7 +3,7 @@ variable "klipper_img_version" {
 }
 
 variable "moonraker_img_version" {
-  default = "293a4cfc2112b950f7cd9abde68d65cd8074b0e4"
+  default = "latest"
 }
 
 locals {
