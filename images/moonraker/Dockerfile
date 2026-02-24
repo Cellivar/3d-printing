@@ -32,6 +32,7 @@ RUN apt update && apt install -y \
   sudo \
   git \
   jq \
+  uhubctl \
   && apt clean
 
 RUN groupadd moonraker --gid 1000 \
