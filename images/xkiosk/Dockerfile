@@ -22,9 +22,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     xfce4-terminal \
     elementary-xfce-icon-theme
 
-RUN \
-
-
 # Install xorg server and related packges
 RUN <<EOF
 apk update --no-cache
