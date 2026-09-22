@@ -30,23 +30,48 @@ module "printer_otrmo" {
         {
           # Cetus2 toolhead with LGX Lite v2 extruders
           key       = "toolhead/cetus2"
-          condition = "eq (keyOrDefault \"apps/3d_printers/otrmo_settings/toolhead\" \"mailbox\") \"cetus2\""
+          condition = "eq (keyOrDefault \"apps/3d_printers/otrmo_settings/toolhead\" \"dragonace\") \"cetus2\""
           content   = file("${local.tmpldir}/otrmo/toolhead_cetus2.cfg")
         },
         {
           # Mailbox toolhead w/Revo Voron
           key       = "toolhead/mailbox"
-          condition = "eq (keyOrDefault \"apps/3d_printers/otrmo_settings/toolhead\" \"mailbox\") \"mailbox\""
-          content   = join("\n", [
+          condition = "eq (keyOrDefault \"apps/3d_printers/otrmo_settings/toolhead\" \"dragonace\") \"mailbox\""
+          content = join("\n", [
             # Main toolhead config
             templatefile("${local.tmpldir}/otrmo/toolhead_mailbox.cfg", {
               orbitool_mcu_name = "orbitool"
             }),
             # Orbitool O2 board via USB
             templatefile("${local.tmpldir}/pins/orbitool_o2.cfg", {
-              mcu_name = "orbitool"
+              mcu_name   = "orbitool"
               mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32f042x6_23002E000C43304E42323620-if00"
             }),
+          ])
+        },
+        {
+          # Dragonburner toolhead w/Dragon Ace + Meltzone extender
+          key       = "toolhead/dragonace"
+          condition = "eq (keyOrDefault \"apps/3d_printers/otrmo_settings/toolhead\" \"dragonace\") \"dragonace\""
+          content   = join("\n", [
+            templatefile("${local.tmpldir}/otrmo/toolhead_dragonace.cfg", {
+              orbitool_mcu_name = "orbitool"
+            }),
+            # Orbitool O2S board via USB
+            templatefile("${local.tmpldir}/pins/orbitool_o2s.cfg", {
+              mcu_name   = "orbitool"
+              mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32f072xb_430032001657475534393420-if00"
+              fan_pins = 2
+              hotend_fan = "true"
+            }),
+            # Orbitool Sensor board via Orbitool board
+            templatefile("${local.tmpldir}/pins/orbiter_sensor_2.cfg", {
+              mcu_name   = "orbitool"
+            }),
+            # bd_pressure strain gauge via USB
+            # templatefile("${local.tmpldir}/pins/bd_pressure.cfg", {
+            #   mcu_name   = "orbitool"
+            # })
           ])
         }
       ]
