@@ -15,8 +15,8 @@ module "printer_otrmo" {
   printer_configs = merge(local.common_configs, {
     "main_printer.cfg"           = file("${local.tmpldir}/otrmo/main_printer.cfg")
     "macros/macros.cfg"          = file("${local.tmpldir}/otrmo/macros.cfg")
-    "macros/mixing_extruder.cfg" = file("${local.tmpldir}/common/mixing_extruder.cfg")
     "pins/skr_1_4.cfg"           = file("${local.tmpldir}/pins/skr_1_4.cfg")
+    "common/filament.cfg"        = file("${local.tmpldir}/common/filament_manual.cfg")
 
     "moonraker.conf" = templatefile("${local.tmpldir}/common/moonraker.conf", {
       power_relay_gpio = "gpio18"
