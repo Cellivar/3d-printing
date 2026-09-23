@@ -221,6 +221,8 @@ job "3DPrinter-Services" {
           # Host and port to listen on
           SPOOLMAN_HOST=0.0.0.0
           SPOOLMAN_PORT=7912
+          SPOOLMAN_CORS_ORIGIN=https://fluidd.squeak.house
+          SPOOLMAN_METRICS_ENABLED=true
 
           # DB Type: sqlite, mysql, postgresql, cockroachdb
           # Default if not set: sqlite
