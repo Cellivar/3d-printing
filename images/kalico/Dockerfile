@@ -39,6 +39,9 @@ COPY --chown=klipper:klipper --from=build /opt/venv ./venv
 # Not needed with Kalico as it has built-in z calibration
 # ADD --chown=klipper:klipper https://github.com/protoloft/klipper_z_calibration/raw/master/z_calibration.py ./klipper/klippy/extras
 
+# BD_Pressure strain gauge sensor = https://github.com/markniu/bd_pressure
+ADD --chown=klipper:klipper https://github.com/markniu/bd_pressure/raw/main/klipper/bdpressure.py ./klipper/klippy/extras
+
 # Klipper auto speed - https://github.com/ideas32/klipper_auto_speed
 ADD --chown=klipper:klipper https://github.com/cellivar/klipper_auto_speed.git#main /home/klipper/klipper_auto_speed
 RUN mkdir -p ./klipper/klippy/extras/autospeed \
