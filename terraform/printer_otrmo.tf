@@ -60,7 +60,7 @@ module "printer_otrmo" {
             # Orbitool O2S board via USB
             templatefile("${local.tmpldir}/pins/orbitool_o2s.cfg", {
               mcu_name   = "orbitool"
-              mcu_serial = "/dev/serial/by-id/usb-Klipper_stm32f072xb_430032001657475534393420-if00"
+              mcu_serial = "/dev/serial/by-id/usb-Klipper_Orbitool_OS2_430032001657475534393420-if00"
               fan_pins = 2
               hotend_fan = "true"
             }),
